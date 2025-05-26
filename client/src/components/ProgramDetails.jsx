@@ -1,3 +1,15 @@
+const navigateToLink = () => {
+    window.open(
+      "https://docs.google.com/forms/d/e/1FAIpQLSdFRF4LeWk9J-61II-J5-nzyDTRL9808096UavLGplhQlTtvg/viewform?pli=1",
+      "_blank"
+    );
+  };
+  const ToLink = () => {
+    window.open(
+      "https://docs.google.com/forms/d/e/1FAIpQLSdaMtd_CVVT_iGR5LCNqKOmdLX_PiT4uM5_-mzwDbQvUqI1gg/viewform",
+      "_blank"
+    );
+  };
 const ProgramDetails = () => {
   return (
     <section className="py-12 px-6 md:px-16 bg-white">
@@ -5,7 +17,7 @@ const ProgramDetails = () => {
         
         {/* LEFT SIDE: Text and Buttons */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#593A08] mb-6">Intro to AI Program Details:</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-orange-600 mb-6">Intro to AI Program Details:</h2>
 
           <ul className="space-y-4 text-gray-800">
             <li>✔️ The Intro to AI programs have a very nominal fee (free for several schools and with financial support available for students who need it).</li>
@@ -17,16 +29,19 @@ const ProgramDetails = () => {
 
           {/* Buttons */}
           <div className="mt-8 flex flex-wrap gap-4">
-            <button className="bg-[#593A08] hover:bg-[#7c5310] text-white font-medium py-2 px-4 rounded">
-              Register for practical AI course
-            </button>
-            <button className="bg-[#D9D2C0] text-black font-medium py-2 px-4 rounded">
+            <button
+      onClick={navigateToLink}
+      className="bg-orange-600 hover:bg-[#7c5310] text-white font-medium py-2 px-4 rounded"
+    >
+      Register for practical AI course
+    </button>
+            <button onClick="CourseDetails" className="bg-orange-200 text-black font-medium py-2 px-4 rounded">
               Class Recoding (AI sessions)
             </button>
-            <button className="border border-[#593A08] text-[#593A08] hover:bg-[#f8f1e7] font-medium py-2 px-4 rounded">
+            <button onClick= "/MediaCoverage"className="border border-orange-600 text-[#593A08] hover:bg-[#f8f1e7] font-medium py-2 px-4 rounded">
               Join Live Events
             </button>
-            <button className="border border-[#593A08] text-[#593A08] hover:bg-[#f8f1e7] font-medium py-2 px-4 rounded">
+            <button onClick={ToLink} className="border border-orange-700 text-[#593A08] hover:bg-[#f8f1e7] font-medium py-2 px-4 rounded">
               Internship Opportunities
             </button>
           </div>
