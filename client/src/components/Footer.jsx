@@ -1,130 +1,63 @@
-"use client"
+import React from 'react';
+import { FaFacebookF, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
 
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram } from "lucide-react"
-
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12 px-16">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-lg font-bold mb-4">PAI-Excel</h3>
-            <p className="text-gray-400 mb-4">Pioneering the future of AI education in Punjab</p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                <Instagram size={20} />
-              </a>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                  Courses
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-lg font-bold mb-4">Resources</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                  FAQs
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                  Terms of Service
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-lg font-bold mb-4">Contact Us</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <MapPin size={18} className="mr-2 mt-1 flex-shrink-0 text-primary" />
-                <span className="text-gray-400">123 AI Street, Punjab, India</span>
-              </li>
-              <li className="flex items-center">
-                <Phone size={18} className="mr-2 flex-shrink-0 text-primary" />
-                <span className="text-gray-400">+91 123 456 7890</span>
-              </li>
-              <li className="flex items-center">
-                <Mail size={18} className="mr-2 flex-shrink-0 text-primary" />
-                <span className="text-gray-400">info@punjabai.com</span>
-              </li>
-            </ul>
-            <button className="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
-              Contact Us
-            </button>
-          </motion.div>
+    <footer className="bg-white border-t border-gray-200 py-10 px-6 lg:px-20 text-sm">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+        
+        {/* Left Column - Branding */}
+        <div>
+          <h2 className="text-[#44425A] text-lg font-semibold mb-2">PAI-Excel</h2>
+          <p className="text-[#6C6A74] mb-4">
+            Empowering innovation in AI <br /> excellence across Punjab and beyond.
+          </p>
+          <div className="flex gap-3">
+            <a href="#" className="text-[#FF6600]"><FaFacebookF /></a>
+            <a href="#" className="text-[#FF6600]"><FaYoutube /></a>
+            <a href="#" className="text-[#FF6600]"><FaLinkedinIn /></a>
+          </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Punjab AI Excellence. All rights reserved.</p>
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-[#44425A] font-semibold mb-3">Quick Links</h3>
+          <ul className="space-y-2 text-[#6C6A74]">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Media coverage</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </div>
+
+        {/* Resources */}
+        <div>
+          <h3 className="text-[#44425A] font-semibold mb-3">Resources</h3>
+          <ul className="space-y-2 text-[#6C6A74]">
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+
+        {/* Subscribe */}
+        <div>
+          <h3 className="text-[#44425A] font-semibold mb-3">Subscribe</h3>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full px-3 py-2 border border-gray-300 rounded text-[#6C6A74] mb-3 focus:outline-none"
+          />
+          <button className="w-full bg-[#FF6600] text-white font-semibold py-2 rounded hover:bg-[#e65c00] transition">
+            Subscribe
+          </button>
         </div>
       </div>
-    </footer>
-  )
-}
 
-export default Footer
+      {/* Bottom Copyright */}
+      <div className="mt-10 text-center text-[#6C6A74] text-xs">
+        © 2025 PAI-Excel. All rights reserved.
+      </div>
+    </footer>
+  );
+}

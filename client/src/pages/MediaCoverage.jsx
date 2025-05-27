@@ -103,7 +103,7 @@ const FutureOfIT = () => {
 
       {/* Featured Conversation */}
       <section className="py-16 bg-gray-50 text-center">
-        <h2 className="text-3xl font-semi-bold text-orange-600 mb-8">Featured Conversation</h2>
+        <h2 className="text-3xl font-semi-bold text-black mb-8">Featured Conversation</h2>
       <motion.div
   className="container mx-auto rounded-lg shadow-md bg-white p-8 flex flex-col md:flex-row gap-6"
   initial={{ opacity: 0, scale: 0.9 }}
@@ -148,7 +148,7 @@ const FutureOfIT = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-orange-600 mb-4">Podcast Library</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">Podcast Library</h1>
             <div className="w-32 h-1 bg-gradient-to-r from-orange-600 to-amber-600 mx-auto rounded-full"></div>
           </motion.div>
 
@@ -208,7 +208,7 @@ const FutureOfIT = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-orange-600 mb-4">Media and Press</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">Media and Press</h2>
             <div className="w-32 h-1 bg-gradient-to-r from-orange-600 to-amber-600 mx-auto rounded-full"></div>
           </motion.div>
 
