@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+ 
 const eventsData = [
   {
     id: 1,
@@ -8,6 +8,8 @@ const eventsData = [
     date: '23 April',
     description:
       'Our team conducted another AI session for Bachelors of Education (B.Ed.) students at PAI-Excellence, introducing fundamentals and practical demonstrations.',
+    moreInfo:
+      'This session included interactive Q&A, demonstrations using AI tools like ChatGPT, and activities aimed at sparking interest in AI-driven teaching methods.',
   },
   {
     id: 2,
@@ -16,6 +18,8 @@ const eventsData = [
     date: '21 April',
     description:
       'PAI-Excellence hosted a live online AI orientation for over 100 Akal Academy schools, attended by 15,000+ students.',
+    moreInfo:
+      'It featured expert talks, real-time demonstrations of AI applications, and a roadmap for AI learning for school students.',
   },
   {
     id: 3,
@@ -24,6 +28,8 @@ const eventsData = [
     date: '29 March',
     description:
       'Dr. Sandeep Singh Sandha led an expert deep-dive session on GPU-accelerated AI for our Practical AI cohort, covering hands-on ML workflows.',
+    moreInfo:
+      'Advanced topics like model tuning, AI ethics, and deployment were also covered in this interactive workshop.',
   },
   {
     id: 4,
@@ -32,10 +38,18 @@ const eventsData = [
     date: '7 April',
     description:
       'PAI-Excellence delivered in-person AI workshops across multiple Akal Academy campuses, giving students live coding demonstrations.',
+    moreInfo:
+      'Hands-on activities helped students understand basic AI logic, and mentors answered questions related to AI career paths.',
   },
 ];
-
+ 
 export default function Events() {
+  const [expandedId, setExpandedId] = useState(null);
+ 
+  const toggleExpand = (id) => {
+    setExpandedId(prev => (prev === id ? null : id));
+  };
+ 
   return (
     <div className="space-y-12 px-6 lg:px-20 py-12">
       {eventsData.map((evt, idx) => (
@@ -53,15 +67,23 @@ export default function Events() {
               className="w-full h-48 object-cover rounded-lg"
             />
           </div>
-
+ 
           {/* Text */}
           <div className="w-full md:w-1/2">
             <h3 className="text-2xl font-semibold text-[#44425A] mb-2">
               {evt.title}
             </h3>
             <p className="text-[#6C6A74] mb-4">{evt.description}</p>
-            <button className="inline-block bg-[#FF6600] text-white px-4 py-2 rounded hover:bg-[#e05500] transition">
-              Know More
+ 
+            {expandedId === evt.id && (
+              <p className="text-[#6C6A74] mb-4">{evt.moreInfo}</p>
+            )}
+ 
+            <button
+              onClick={() => toggleExpand(evt.id)}
+              className="bg-[#FF6600] text-white font-semibold py-2 px-6 rounded-full hover:bg-[#e65c00] transition"
+            >
+              {expandedId === evt.id ? 'Show Less' : 'Know More'}
             </button>
           </div>
         </div>
@@ -69,3 +91,7 @@ export default function Events() {
     </div>
   );
 }
+ 
+ 
+
+ 

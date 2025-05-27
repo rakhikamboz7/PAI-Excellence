@@ -12,7 +12,7 @@ const fblink = () => {
  const podcastVideos = [
     {
       id: 1,
-      title: "Everything AI",
+      title: "Everything AI: Don't fear from AI now, learn it with us | Dr. Sandeep Singh & Dr Inderjot Kaur ",
       channel: "Adbi Baithak",
       thumbnail: "https://www.youtube.com/embed/0MyPF_z9p6E", 
       videoId: "0MyPF_z9p6E", // Replace with actual YouTube video IDs
