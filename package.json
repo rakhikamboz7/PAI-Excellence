@@ -1,5 +1,16 @@
 {
-  "devDependencies": {
+  "name": "vite-project",
+  "version": "1.0.0",
+  "description": "A simple Vite project setup",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+
+
+    "devDependencies": {
     "vite": "^6.3.5"
   }
 }
