@@ -2,15 +2,17 @@
   "name": "vite-project",
   "version": "1.0.0",
   "description": "A simple Vite project setup",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "start": "vite"
+    "start": "vite",
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint",
+    "preview": "vite preview"
   },
   "author": "Your Name",
   "license": "MIT",
-
-
-    "devDependencies": {
+  "devDependencies": {
     "vite": "^6.3.5"
   }
 }
