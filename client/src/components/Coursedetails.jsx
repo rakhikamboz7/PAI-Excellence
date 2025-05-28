@@ -1,183 +1,244 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useRef } from 'react';
-import { FaUser, FaClock, FaStar } from 'react-icons/fa';
- 
-export default function Coursedetails() {
-  const topCourses = [
-    { id: 1, classLabel: '1st class', title: 'Learn & Master AI Now', description: 'This session marked the start of the Practical Artificial Intelligence Course for the April…' },
-    { id: 2, classLabel: '2nd class', title: 'Steps in Creating AI & AI for Agriculture', description: 'This session marked the start of the Practical Artificial Intelligence Course for the April…' },
-    { id: 3, classLabel: '3rd class', title: 'Steps in Creating AI with Deeper Insights', description: 'This session marked the start of the Practical Artificial Intelligence Course for the April…' },
-  ];
- 
-  const moreCourses = [
-    { title: 'Age of Intelligence', img: '/Images/Card1.png', students: '1k students', duration: '1hr 20min', rating: '4.0 (300)', date: 'Jan 25, 2025' },
-    { title: 'What is AI?', img: '/Images/Card2.png', students: '800 students', duration: '1hr 10min', rating: '4.2 (180)', date: 'Jan 26, 2025' },
-    { title: 'What is AI in Punjabi', img: '/Images/Card3.png', students: '800 students', duration: '1hr 10min', rating: '4.2 (180)', date: 'Jan 27, 2025' },
-    { title: 'Steps in Creating AI', img: '/Images/Card4.png', students: '800 students', duration: '1hr 10min', rating: '4.2 (180)', date: 'Jan 28, 2025' },
-    { title: 'Simplified AI Steps', img: '/Images/Card5.png', students: '800 students', duration: '1hr 10min', rating: '4.2 (180)', date: 'Jan 29, 2025' },
-    { title: 'Can AI Replace Humans?', img: '/Images/Card6.png', students: '800 students', duration: '1hr 10min', rating: '4.2 (180)', date: 'Jan 30, 2025' },
-    { title: 'The journey of Data', img: '/Images/Card7.png', students: '800 students', duration: '1hr 10min', rating: '4.2 (180)', date: 'Feb 1, 2025' },
-    { title: 'Human Experts vs AI', img: '/Images/Card8.png', students: '1K students', duration: '1hr 10min', rating: '4.2 (180)', date: 'Feb 3, 2025' },
-    { title: 'Steps in Using AI', img: '/Images/Card9.png', students: '1K students', duration: '1hr 10min', rating: '4.2 (180)', date: 'Feb 4, 2025' },
-  ];
- 
-  const testimonials = [
-    { id: 1, img: '/Images/student1.png', text: 'This course opened my eyes to real-world AI applications in healthcare and agriculture. Highly recommend!', name: '— Aisha Kapoor' },
-    { id: 2, img: '/Images/student3.png', text: 'Hands-on sessions with expert instructors made complex concepts easy to grasp.', name: '— Rohit Mehra' },
-    { id: 3, img: '/Images/student2.png', text: 'Great roadmap and practical examples; I built my first AI project within a week!', name: '— Sneha Iyer' },
-  ];
- 
-  const [modalCourse, setModalCourse] = useState(null);
-  const openModal = (course) => setModalCourse(course);
-  const closeModal = () => setModalCourse(null);
- 
-  const handleWatchNow = () => {
-    window.location.href = 'https://www.youtube.com/embed/JIKf55ZBPes?si=3WSSi0REj7YCKgj6';
-  };
- 
-  const [showAll, setShowAll] = useState(false);
-  const displayedCourses = showAll ? moreCourses : moreCourses.slice(0, 6);
- 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [formStatus, setFormStatus] = useState(null);
- 
-  const handleSubmit = async e => {
-    e.preventDefault();
+
+import React, { useState } from "react"
+import { FaUser, FaClock, FaStar } from "react-icons/fa"
+import { useTranslation } from "react-i18next"
+
+export default function CourseDetail() {
+  const { t } = useTranslation()
+  // Fetch course arrays from translation JSON
+  const topCourses = t("courseDetail.courses.top", { returnObjects: true }) || []
+  const moreCourses = t("courseDetail.courses.more", { returnObjects: true }) || []
+  const testimonials = t("courseDetail.testimonials.reviews", { returnObjects: true }) || []
+
+  const [modalCourse, setModalCourse] = useState(null)
+  const openModal = (course) => setModalCourse(course)
+  const closeModal = () => setModalCourse(null)
+  const handleWatchNow = (e) => {
+    e?.stopPropagation?.()
+    window.location.href = "https://www.youtube.com/embed/JIKf55ZBPes?si=3WSSi0REj7YCKgj6"
+  }
+
+  const [showAll, setShowAll] = useState(false)
+  const displayedCourses = showAll ? moreCourses : moreCourses.slice(0, 2) // Only 3 sample entries, so show max 2 unless "ਹੋਰ ਵੇਖੋ"
+
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+  const [formStatus, setFormStatus] = useState(null)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
-      const res = await fetch('http://localhost:5000/api/doubts', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message })
-      });
+      const res = await fetch("http://localhost:5000/api/doubts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      })
       if (res.ok) {
-        setFormStatus('success');
-        setName(''); setEmail(''); setMessage('');
+        setFormStatus("success")
+        setName("")
+        setEmail("")
+        setMessage("")
       } else {
-        setFormStatus('error');
+        setFormStatus("error")
       }
     } catch {
-      setFormStatus('error');
+      setFormStatus("error")
     }
-  };
- 
+  }
+
   return (
     <div className="min-h-screen font-sans bg-gray-50">
       {/* Hero Section */}
-      <section className="relative h-[360px] bg-cover bg-center flex items-center justify-start px-6 lg:px-20" style={{ backgroundImage: "url('/Hero.png')" }}>
+      <section
+        className="relative h-[360px] bg-cover bg-center flex items-center justify-start px-6 lg:px-20"
+        style={{ backgroundImage: "url('/Hero.png')" }}
+      >
         <div className="relative z-10 w-full lg:w-1/2 text-left text-white">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Dive Into Our<br />
-            Comprehensive AI Courses
-          </h2>
-          <p className="max-w-md text-lg opacity-90">Gain hands-on experience with real-world projects, expert-led sessions, and interactive labs designed to elevate your AI skills.</p>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t("courseDetail.heroTitle")}</h2>
+          <p className="max-w-md text-lg opacity-90">{t("courseDetail.heroSubtitle")}</p>
         </div>
       </section>
- 
+
       {/* Top 3 Practical AI Course Recordings */}
       <section className="container mx-auto px-6 lg:px-20 py-12">
-        <h3 className="text-2xl font-semibold mb-6 text-[#44425A]">Practical AI Course Recordings: Batch (26 April 2025 – Present)</h3>
+        <h3 className="text-2xl font-semibold mb-6 text-[#44425A]">{t("courseDetail.practicalAI")}</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
-          {topCourses.map(({ id, classLabel, title, description }) => (
-            <div key={id} className="hover:shadow-lg transition-[50%] cursor-pointer bg-white hover:border-grey-500 border border-gray-300 rounded-[20px] hover:brightness-70 flex flex-col overflow-hidden">
+          {topCourses.map(({ classLabel, title, description }, idx) => (
+            <div
+              key={idx}
+              className="hover:shadow-lg transition-[50%] cursor-pointer bg-white hover:border-grey-500 border border-gray-300 rounded-[20px] hover:brightness-70 flex flex-col overflow-hidden"
+            >
               <div className="p-6 flex-grow">
-                <span className="inline-block text-xs text-[#6C6A74] bg-[#EBEAEF] px-3 py-1 rounded-full mb-4">{classLabel}</span>
+                <span className="inline-block text-xs text-[#6C6A74] bg-[#EBEAEF] px-3 py-1 rounded-full mb-4">
+                  {classLabel}
+                </span>
                 <h4 className="text-lg font-bold mb-2 text-[#44425A]">{title}</h4>
                 <p className="text-sm text-[#6C6A74] leading-relaxed">{description}</p>
               </div>
-              <button onClick={handleWatchNow} className="mx-4 mb-4 py-3 text-center text-white bg-[#FF6600] font-semibold rounded-full hover:brightness-90 transition">Watch Now →</button>
+              <button
+                onClick={handleWatchNow}
+                className="mx-4 mb-4 py-3 text-center text-white bg-[#FF6600] font-semibold rounded-full hover:brightness-90 transition"
+              >
+                {t("courseDetail.watchNow")} &rarr;
+              </button>
             </div>
           ))}
         </div>
       </section>
- 
+
       {/* More Courses Grid */}
       <section className="container mx-auto px-6 lg:px-20 py-12 rounded-t-3xl">
-        <h3 className="text-2xl font-semibold mb-6 text-[#44425A]">Practical AI Course Recordings (Batch: 25 Jan 2025 – 4 Apr 2025)</h3>
+        <h3 className="text-2xl font-semibold mb-6 text-[#44425A]">{t("courseDetail.moreCourses")}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayedCourses.map((course, idx) => (
-            <div key={idx} className="bg-white border border-gray-300 rounded-[20px] overflow-hidden hover:shadow-lg transition cursor-pointer" onClick={() => openModal(course)}>
-              <img src={course.img} alt={course.title} className="w-full h-40 object-cover" />
+            <div
+              key={idx}
+              className="bg-white border border-gray-300 rounded-[20px] overflow-hidden hover:shadow-lg transition cursor-pointer"
+              onClick={() => openModal(course)}
+            >
+              <img src={course.img || "/placeholder.svg"} alt={course.title} className="w-full h-40 object-cover" />
               <div className="p-4">
                 <div className="flex items-center text-sm text-[#6C6A74] mb-2 space-x-2">
-                  <FaUser className="text-[#FF6600]" /><span>{course.students}</span>
-                  <FaClock className="ml-4 text-[#FF6600]" /><span>{course.duration}</span>
+                  <FaUser className="text-[#FF6600]" />
+                  <span>{course.students}</span>
+                  <FaClock className="ml-4 text-[#FF6600]" />
+                  <span>{course.duration}</span>
                 </div>
                 <h4 className="text-lg font-semibold mb-2 text-[#44425A]">{course.title}</h4>
                 <hr className="border-gray-200 mb-2" />
-                <div className="flex items-center mb-4"><FaStar className="text-[#FF6600] mr-1" /><span className="text-sm text-[#6C6A74]">{course.rating}</span></div>
-                {/* <button onClick={handleWatchNow} className="px-4 py-1 bg-[#FF6600] text-white text-sm font-semibold rounded-full hover:brightness-90 transition">
-                  Watch Now →
-                </button> */}
-                <div className="flex justify-between items-center">
-  <div className="flex items-center text-sm text-[#6C6A74]">
-   
-  </div>
-  <button
-    onClick={handleWatchNow}
-    className="bg-[#FF6600] text-white text-sm font-semibold rounded-full px-4 py-2 hover:brightness-90 transition"
-  >
-    Watch Now
-  </button>
-</div>
- 
+                <div className="flex items-center mb-4">
+                  <FaStar className="text-[#FF6600] mr-1" />
+                  <span className="text-sm text-[#6C6A74]">{course.rating}</span>
+                </div>
+                <div className="flex justify-between items-center"></div>
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleWatchNow(e); }}
+                  className="bg-[#FF6600] text-white text-sm font-semibold rounded-full px-4 py-2 hover:brightness-90 transition mt-2"
+                >
+                  {t("courseDetail.watchNow")}
+                </button>
               </div>
             </div>
           ))}
         </div>
- 
         {/* Explore More/Less Button */}
         <div className="text-center mt-8">
-          <button onClick={() => setShowAll(!showAll)} className="px-6 py-3 bg-[#FF6600] text-white font-semibold rounded-full hover:brightness-90 transition">
-            {showAll ? 'Explore Less' : 'Explore more'}
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-6 py-3 bg-[#FF6600] text-white font-semibold rounded-full hover:brightness-90 transition"
+          >
+            {showAll ? t("courseDetail.exploreLess") : t("courseDetail.exploreMore")}
           </button>
         </div>
- 
         {/* Modal Dialog */}
         {modalCourse && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6 relative">
-              <button onClick={closeModal} className="absolute top-2 right-2 text-gray-500 hover:text-gray-800">✕</button>
-              <h3 className="text-xl font-bold mb-2 text-[#44425A]">About This Module: {modalCourse.title}</h3>
-              <p className="text-sm text-[#6C6A74] mb-2"><strong>Session Date:</strong> {modalCourse.date}</p>
-              <p className="text-sm text-[#6C6A74] mb-2"><strong>Instructor:</strong> Dr. Sandeep Singh Sandha (UCLA, IIT Roorkee)</p>
-              <p className="text-sm text-[#6C6A74] mb-2"><strong>Key Takeaways:</strong> Real-world AI use in healthcare, agriculture, and wildlife. Hands-on projects using Python.</p>
-              <p className="text-sm text-[#6C6A74] mb-4"><strong>Who Joined:</strong> Students from 200+ cities, ready to lead the AI revolution.</p>
-              <button onClick={handleWatchNow} className="w-full py-2 bg-[#FF6600] text-white font-semibold rounded-full hover:brightness-90 transition">Watch Now →</button>
+              <button onClick={closeModal} className="absolute top-2 right-2 text-gray-500 hover:text-gray-800" aria-label="close modal">
+                &times;
+              </button>
+              <h3 className="text-xl font-bold mb-2 text-[#44425A]">
+                {t("courseDetail.aboutModule")} {modalCourse.title}
+              </h3>
+              <p className="text-sm text-[#6C6A74] mb-2">
+                <strong>{t("courseDetail.sessionDate")}</strong> {modalCourse.date}
+              </p>
+              <p className="text-sm text-[#6C6A74] mb-2">
+                <strong>{t("courseDetail.instructor")}</strong> ਡਾ. ਸੰਦੀਪ ਸਿੰਘ ਸੰਧਾ (UCLA, IIT Roorkee)
+              </p>
+              <p className="text-sm text-[#6C6A74] mb-2">
+                <strong>{t("courseDetail.keyTakeaways")}</strong> AI ਸਿਹਤ, ਖੇਤੀ ਅਤੇ ਜੀਵ ਜੰਤੂਆਂ ਵਿੱਚ ਵਰਤੋਂ। Python ਨਾਲ ਹੱਥ-ਵਿਖਾਈ ਪ੍ਰਾਜੈਕਟ।
+              </p>
+              <p className="text-sm text-[#6C6A74] mb-4">
+                <strong>{t("courseDetail.whoJoined")}</strong> 200+ ਸ਼ਹਿਰਾਂ ਤੋਂ ਵਿਦਿਆਰਥੀਆਂ ਨੇ ਭਾਗ ਲਿਆ।
+              </p>
+              <button
+                onClick={handleWatchNow}
+                className="w-full py-2 bg-[#FF6600] text-white font-semibold rounded-full hover:brightness-90 transition"
+              >
+                {t("courseDetail.watchNow")} &rarr;
+              </button>
             </div>
           </div>
         )}
       </section>
- 
+
       {/* Contact Form Section */}
       <section className="container mx-auto px-6 lg:px-20 pt-12 pb-12 bg-[#EBEAEF]">
-        <h3 className="text-2xl font-semibold mb-2 text-center text-[#44425A]">Have any course-related doubts?</h3>
-        <p className="text-center text-sm mb-6 text-[#6C6A74]">(Drop your questions below and our team will get back to you with detailed answers and guidance.)</p>
+        <h3 className="text-2xl font-semibold mb-2 text-center text-[#44425A]">
+          {t("courseDetail.contactForm.title")}
+        </h3>
+        <p className="text-center text-sm mb-6 text-[#6C6A74]">{t("courseDetail.contactForm.subtitle")}</p>
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4">
-          <input type="text" placeholder="Enter your name" value={name} onChange={e => setName(e.target.value)} className="w-full px-4 py-3 border border-[#6C6A74] rounded-full focus:outline-none placeholder-[#6C6A74] text-[#6C6A74]" required />
-          <input type="email" placeholder="Enter your email" value={email} onChange={e => setEmail(e.target.value)} className="w-full px-4 py-3 border border-[#6C6A74] rounded-full focus:outline-none placeholder-[#6C6A74] text-[#6C6A74]" required />
-          <textarea rows="4" placeholder="Enter your query" value={message} onChange={e => setMessage(e.target.value)} className="w-full px-4 py-3 border border-[#6C6A74] rounded-[20px] focus:outline-none placeholder-[#6C6A74] text-[#6C6A74]" required />
-          <button type="submit" className="w-full px-4 py-3 rounded-full bg-[#FF6600] text-white font-semibold hover:brightness-90 transition">Submit Query</button>
-          {formStatus === 'success' && <p className="text-green-600 text-center font-medium pt-2">Query submitted successfully!</p>}
-          {formStatus === 'error' && <p className="text-red-600 text-center font-medium pt-2">Error: Query not submitted.</p>}
+          <input
+            type="text"
+            placeholder={t("courseDetail.contactForm.namePlaceholder")}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full px-4 py-3 border border-[#6C6A74] rounded-full focus:outline-none placeholder-[#6C6A74] text-[#6C6A74]"
+            required
+            aria-label={t("courseDetail.contactForm.namePlaceholder")}
+          />
+          <input
+            type="email"
+            placeholder={t("courseDetail.contactForm.emailPlaceholder")}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-4 py-3 border border-[#6C6A74] rounded-full focus:outline-none placeholder-[#6C6A74] text-[#6C6A74]"
+            required
+            aria-label={t("courseDetail.contactForm.emailPlaceholder")}
+          />
+          <textarea
+            rows="4"
+            placeholder={t("courseDetail.contactForm.queryPlaceholder")}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="w-full px-4 py-3 border border-[#6C6A74] rounded-[20px] focus:outline-none placeholder-[#6C6A74] text-[#6C6A74]"
+            required
+            aria-label={t("courseDetail.contactForm.queryPlaceholder")}
+          />
+          <button
+            type="submit"
+            className="w-full px-4 py-3 rounded-full bg-[#FF6600] text-white font-semibold hover:brightness-90 transition"
+          >
+            {t("courseDetail.contactForm.submit")}
+          </button>
+          {formStatus === "success" && (
+            <p className="text-green-600 text-center font-medium pt-2">{t("courseDetail.contactForm.success")}</p>
+          )}
+          {formStatus === "error" && (
+            <p className="text-red-600 text-center font-medium pt-2">{t("courseDetail.contactForm.error")}</p>
+          )}
         </form>
       </section>
- 
-      {/* Hear From Our Students Section */}
+
+      {/* Testimonials */}
       <section className="container mx-auto px-6 lg:px-20 py-12 bg-white">
-        <h3 className="text-3xl font-semibold text-[#44425A] text-center mb-8">Hear From Our Students</h3>
+        <h3 className="text-3xl font-semibold text-[#44425A] text-center mb-8">
+          {t("courseDetail.testimonials.title")}
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map(({ id, img, text, name }) => (
-            <div key={id} className="flex flex-col items-center text-center px-4">
-              <div className="h-32 w-32 mb-4"><img src={img} alt={`${name} photo`} className="h-full w-full object-cover rounded-full transform transition duration-300 ease-in-out hover:scale-110" /></div>
-              <p className="text-[#6C6A74] text-sm italic"><span className="text-[#FF6600]">“</span>{text}<span className="text-[#FF6600]">”</span></p>
-              <h5 className="mt-3 font-medium text-[#6C6A74]">{name}</h5>
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="flex flex-col items-center text-center px-4">
+              <div className="h-32 w-32 mb-4">
+                <img
+                  src={`/Images/student${index + 1}.png`}
+                  alt={`${testimonial.name} photo`}
+                  className="h-full w-full object-cover rounded-full transform transition duration-300 ease-in-out hover:scale-110"
+                />
+              </div>
+              <p className="text-[#6C6A74] text-sm italic">
+                <span className="text-[#FF6600]">"</span>
+                {testimonial.text}
+                <span className="text-[#FF6600]">"</span>
+              </p>
+              <h5 className="mt-3 font-medium text-[#6C6A74]">{testimonial.name}</h5>
             </div>
           ))}
         </div>
       </section>
     </div>
-  );
+  )
 }
- 
+

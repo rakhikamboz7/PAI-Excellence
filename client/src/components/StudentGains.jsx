@@ -4,79 +4,23 @@ import { useState, useEffect, useRef } from "react"
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight, Trophy, Target, Users, Briefcase, Code, Star } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 const StudentGains = () => {
+  const { t } = useTranslation()
   const [currentSlide, setCurrentSlide] = useState(0)
-  const totalSlides = 4
   const slideInterval = useRef(null)
 
-  const studentAchievements = [
-    {
-      title: "Master Real-World AI Projects",
-      description: "Build impressive portfolio projects that showcase your skills to potential employers",
-      icon: Code,
-      color: "from-orange-500 to-red-500",
-      images: [
-        "/SBS_Session.jpeg",
-        "/projects.jpeg",
-        "/ai-projects.jpeg",
-      ],
-      benefits: [
-        "Complete 5+ industry-level AI projects",
-        "Build machine learning models from scratch",
-        "Deploy AI solutions to production",
-        "Create impressive GitHub portfolio",
-      ],
-    },
-    {
-      title: "Land High-Paying AI Jobs",
-      description: "Secure lucrative positions at top tech companies with our comprehensive career support",
-      icon: Briefcase,
-      color: "from-orange-600 to-amber-600",
-      images: [
-        "/student_gain.png",
-        "/job.jpg",
-        "/prjc.jpeg",
-      ],
-      benefits: [
-        "Average salary increase of 150%+",        
-        "Interview preparation and mock sessions",
-        "Resume optimization Assistance for AI roles",
-      ],
-    },
-    {
-      title: "Join Elite AI Community",
-      description: "Network with industry experts, researchers, and fellow AI enthusiasts",
-      icon: Users,
-      color: "from-amber-500 to-yellow-500",
-      images: [
-        "/HomePage images.jpeg",
-        "/ai-guide.jpg",
-        "/images.jpg",
-      ],
-      benefits: [
-        "Access to exclusive AI community",
-        "Mentorship from industry leaders",
-        "Networking events and workshops",
-        "Lifetime alumni support network",
-      ],
-    },
-    {
-      title: "Become an AI Innovation Leader",
-      description: "Transform from beginner to AI expert capable of leading cutting-edge projects",
-      icon: Trophy,
-      color: "from-yellow-500 to-orange-500",
-      images: [
-        "/projects.jpeg",
-        
-      ],
-      benefits: [
-        "Lead AI transformation initiatives",
-        "Publish research papers and articles",
-        "Speak at AI conferences and events",
-        "Start your own AI consulting business",
-      ],
-    },
+  const achievements = t("studentGains.achievements", { returnObjects: true })
+  const stats = t("studentGains.stats", { returnObjects: true })
+  const totalSlides = achievements.length
+
+  const achievementIcons = [Code, Briefcase, Users, Trophy]
+  const achievementColors = [
+    "from-orange-500 to-red-500",
+    "from-orange-600 to-amber-600",
+    "from-amber-500 to-yellow-500",
+    "from-yellow-500 to-orange-500",
   ]
 
   useEffect(() => {
@@ -89,7 +33,7 @@ const StudentGains = () => {
         clearInterval(slideInterval.current)
       }
     }
-  }, [])
+  }, [totalSlides])
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides)
@@ -115,7 +59,10 @@ const StudentGains = () => {
     }, 5000)
   }
 
-  // const currentAchievement = studentAchievements[currentSlide]
+  // eslint-disable-next-line no-unused-vars
+  const currentAchievement = achievements[currentSlide]
+  const IconComponent = achievementIcons[currentSlide]
+  const colorClass = achievementColors[currentSlide]
 
   return (
     <section className="py-16 px-16 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
@@ -129,11 +76,9 @@ const StudentGains = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            What Will <span className="text-orange-600">Students Gain</span>
+            {t("studentGains.title")} <span className="text-orange-600">{t("studentGains.title")}</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Transform your career and unlock unlimited opportunities in the exciting world of Artificial Intelligence
-          </p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">{t("studentGains.subtitle")}</p>
           <div className="w-32 h-1 bg-gradient-to-r from-orange-600 to-amber-600 mx-auto rounded-full"></div>
         </motion.div>
 
@@ -179,7 +124,7 @@ const StudentGains = () => {
             animate={{ x: `-${currentSlide * 100}%` }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
-            {studentAchievements.map((achievement, index) => (
+            {achievements.map((achievement, index) => (
               <div key={index} className="w-full flex-shrink-0">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                   {/* Left - Content */}
@@ -190,8 +135,8 @@ const StudentGains = () => {
                     className="space-y-6"
                   >
                     <div className="flex items-center space-x-4">
-                      <div className={`p-4 rounded-2xl bg-gradient-to-r ${achievement.color} shadow-lg`}>
-                        <achievement.icon className="w-8 h-8 text-white" />
+                      <div className={`p-4 rounded-2xl bg-gradient-to-r ${colorClass} shadow-lg`}>
+                        <IconComponent className="w-8 h-8 text-white" />
                       </div>
                       <div>
                         <h3 className="text-3xl font-bold text-gray-900">{achievement.title}</h3>
@@ -228,9 +173,9 @@ const StudentGains = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`px-8 py-4 rounded-xl bg-gradient-to-r ${achievement.color} text-white font-bold shadow-lg hover:shadow-xl transition duration-300`}
+                      className={`px-8 py-4 rounded-xl bg-gradient-to-r ${colorClass} text-white font-bold shadow-lg hover:shadow-xl transition duration-300`}
                     >
-                      Start Your Journey
+                      {t("studentGains.startJourney")}
                     </motion.button>
                   </motion.div>
 
@@ -242,7 +187,7 @@ const StudentGains = () => {
                     className="relative"
                   >
                     <div className="grid grid-cols-2 gap-4">
-                      {achievement.images.map((img, imgIndex) => (
+                      {[1, 2, 3].map((imgIndex) => (
                         <motion.div
                           key={imgIndex}
                           initial={{ opacity: 0, scale: 0.8 }}
@@ -252,12 +197,12 @@ const StudentGains = () => {
                           }}
                           transition={{ duration: 0.5, delay: 0.6 + imgIndex * 0.1 }}
                           className={`rounded-2xl overflow-hidden shadow-lg border-4 border-white ${
-                            imgIndex === 0 ? "col-span-2" : ""
+                            imgIndex === 1 ? "col-span-2" : ""
                           }`}
                         >
                           <img
-                            src={img || "/placeholder.svg"}
-                            alt={`${achievement.title} example ${imgIndex + 1}`}
+                            src="/placeholder.svg?height=200&width=300"
+                            alt={`${achievement.title} example ${imgIndex}`}
                             className="w-full h-48 object-cover hover:scale-105 transition duration-300"
                           />
                         </motion.div>
@@ -289,29 +234,28 @@ const StudentGains = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
           viewport={{ once: true }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-6"
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
         >
-          {[
-            { number: "200+", label: "Students Registered from countries", icon: Users },
-            { number: "99% Student likes Instructors", label: "Rating", icon: Star },
-            { number: "Free Education all over world", label: "Target", icon: Target },
-            
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white p-6 rounded-2xl shadow-lg border border-orange-100 text-center hover:shadow-xl transition duration-300"
-            >
-              <div className="bg-orange-100 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3">
-                <stat.icon className="w-6 h-6 text-orange-600" />
-              </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">{stat.number}</div>
-              <div className="text-sm text-gray-600">{stat.label}</div>
-            </motion.div>
-          ))}
+          {stats.map((stat, index) => {
+            const statIcons = [Users, Briefcase, Target, Trophy]
+            const StatIcon = statIcons[index]
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white p-6 rounded-2xl shadow-lg border border-orange-100 text-center hover:shadow-xl transition duration-300"
+              >
+                <div className="bg-orange-100 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <StatIcon className="w-6 h-6 text-orange-600" />
+                </div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">{stat.number}</div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
+              </motion.div>
+            )
+          })}
         </motion.div>
       </div>
     </section>

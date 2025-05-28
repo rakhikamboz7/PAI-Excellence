@@ -1,9 +1,13 @@
-/* eslint-disable no-unused-vars */
 "use client"
 
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 
 const AboutUs = () => {
+  const { t } = useTranslation()
+  const values = t("aboutUs.values", { returnObjects: true })
+
   return (
     <section className="py-16 px-16 bg-white">
       <div className="container mx-auto">
@@ -11,9 +15,9 @@ const AboutUs = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-8 text-primary"
+          className="text-4xl font-bold mb-8 text-orange-600"
         >
-          About Punjab AI Excellence
+          {t("aboutUs.title")}
         </motion.h1>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -22,17 +26,9 @@ const AboutUs = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="text-2xl font-semibold mb-4">Our Story</h2>
-            <p className="text-gray-700 mb-6">
-              Punjab AI Excellence was established in 2022 with a vision to transform Punjab into a hub for artificial
-              intelligence innovation and education. Our journey began with a small team of passionate AI researchers
-              and educators who recognized the potential of AI to drive economic growth and improve quality of life in
-              the region.
-            </p>
-            <p className="text-gray-700 mb-6">
-              Since our inception, we have grown rapidly, partnering with government agencies, educational institutions,
-              and industry leaders to create a comprehensive ecosystem for AI development and learning in Punjab.
-            </p>
+            <h2 className="text-2xl font-semibold mb-4">{t("aboutUs.ourStory")}</h2>
+            <p className="text-gray-700 mb-6">{t("aboutUs.storyContent1")}</p>
+            <p className="text-gray-700 mb-6">{t("aboutUs.storyContent2")}</p>
           </motion.div>
 
           <motion.div
@@ -54,31 +50,14 @@ const AboutUs = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-16"
         >
-          <h2 className="text-2xl font-semibold mb-6">Our Values</h2>
+          <h2 className="text-2xl font-semibold mb-6">{t("aboutUs.ourValues")}</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-3 text-primary">Innovation</h3>
-              <p className="text-gray-700">
-                We constantly push the boundaries of what's possible with AI, encouraging creative thinking and novel
-                approaches to problem-solving.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-3 text-primary">Collaboration</h3>
-              <p className="text-gray-700">
-                We believe in the power of partnerships between government, industry, academia, and the community to
-                drive meaningful change.
-              </p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-3 text-primary">Excellence</h3>
-              <p className="text-gray-700">
-                We strive for the highest standards in everything we do, from our educational programs to our research
-                initiatives.
-              </p>
-            </div>
+            {values.map((value, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold mb-3 text-orange-600">{value.title}</h3>
+                <p className="text-gray-700">{value.description}</p>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

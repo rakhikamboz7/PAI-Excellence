@@ -1,28 +1,22 @@
-import React from 'react';
+"use client"
+
+import React from "react"
 
 // Main dialog wrapper
 const Dialog = ({ open, children }) => {
-  return (
-    <>
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          {children}
-        </div>
-      )}
-    </>
-  );
-};
+  return <>{open && <div className="fixed inset-0 z-50 flex items-center justify-center">{children}</div>}</>
+}
 
 // Trigger button
 const DialogTrigger = ({ children, ...props }) => {
   return React.cloneElement(children, {
     ...props,
     onClick: (e) => {
-      e.preventDefault();
-      props.onClick?.();
-    }
-  });
-};
+      e.preventDefault()
+      props.onClick?.()
+    },
+  })
+}
 
 // Overlay background
 const DialogOverlay = ({ className, ...props }) => (
@@ -35,7 +29,7 @@ const DialogOverlay = ({ className, ...props }) => (
     `}
     {...props}
   />
-);
+)
 
 // Main dialog content
 const DialogContent = ({ className, children, ...props }) => (
@@ -56,7 +50,7 @@ const DialogContent = ({ className, children, ...props }) => (
       {...props}
     >
       {children}
-      <button 
+      <button
         className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100"
         onClick={props.onOpenChange}
       >
@@ -64,7 +58,7 @@ const DialogContent = ({ className, children, ...props }) => (
       </button>
     </div>
   </div>
-);
+)
 
 // Dialog header
 const DialogHeader = ({ className, children, ...props }) => (
@@ -77,7 +71,7 @@ const DialogHeader = ({ className, children, ...props }) => (
   >
     {children}
   </div>
-);
+)
 
 // Dialog footer
 const DialogFooter = ({ className, children, ...props }) => (
@@ -90,7 +84,7 @@ const DialogFooter = ({ className, children, ...props }) => (
   >
     {children}
   </div>
-);
+)
 
 // Dialog title
 const DialogTitle = ({ className, children, ...props }) => (
@@ -103,7 +97,7 @@ const DialogTitle = ({ className, children, ...props }) => (
   >
     {children}
   </h3>
-);
+)
 
 // Dialog description
 const DialogDescription = ({ className, children, ...props }) => (
@@ -116,15 +110,6 @@ const DialogDescription = ({ className, children, ...props }) => (
   >
     {children}
   </p>
-);
+)
 
-export {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
-  DialogDescription
-};
-
+export { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription }

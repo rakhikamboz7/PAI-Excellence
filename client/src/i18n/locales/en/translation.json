@@ -1,0 +1,337 @@
+{
+  "navbar": {
+    "home": "Home",
+    "courseDetails": "Course Details",
+    "mediaCoverage": "Media Coverage",
+    "events": "Events",
+    "seeInPunjabi": "See in ਪੰਜਾਬੀ",
+    "seeInEnglish": "See in English"
+  },
+  "hero": {
+    "title": "Punjab AI Excellence",
+    "subtitle": "Pioneering the future of AI education in Punjab",
+    "description": "Join our comprehensive program designed to equip you with cutting-edge AI skills and knowledge.",
+    "learnMore": "Learn More",
+    "slides": [
+      {
+        "title": "Punjab AI Excellence",
+        "subtitle": "Pioneering the future of AI education in Punjab",
+        "button": "Learn More"
+      },
+      {
+        "title": "Upgrade Your Skills Remotely",
+        "subtitle": "TOP CERTIFICATION PROGRAMS",
+        "button": "Explore Courses"
+      },
+      {
+        "title": "Learn From Industry Experts",
+        "subtitle": "EXPERT-GUIDED LEARNING",
+        "button": "Get Started"
+      }
+    ]
+  },
+  "mission": {
+    "title": "Our Mission",
+    "description": "To create a vibrant ecosystem of AI innovation and digital excellence in Punjab, driving economic growth and improving the quality of life for citizens. We aim to foster collaboration between government, industry, academia, and the community to propel the state as a leader in AI advancements.",
+    "achievements": [
+      "Punjab AI Excellence Centre established",
+      "Digital Punjab Vision 2025 implemented",
+      "First AI Strategy for Punjab State launched",
+      "Skill development in partnership with PSEB and EdTech companies",
+      "Punjab Hackathon fostering innovation in AI solutions"
+    ]
+  },
+  "batches": {
+    "title": "New Batches and Upcoming Live Classes",
+    "newBatch": {
+      "title": "New Batch starting June 15th",
+      "description": "Join our comprehensive AI program and learn from industry experts. Limited seats available, so enroll now to secure your spot.",
+      "date": "June 15, 2023"
+    },
+    "liveClass": {
+      "title": "Upcoming Live Class: Introduction to LLMs",
+      "description": "Join our free introductory session on Large Language Models. Open to all registrations.",
+      "time": "7:00 PM, June 20, 2023"
+    }
+  },
+  "programDetailsSection": {
+    "title": "Intro to AI Program Details", 
+  "points": [
+    "✔️ The Intro to AI programs have a very nominal fee (free for several schools and with financial support available for students who need it).",
+    "✔️ Free for Punjab Government Schools, SGPC Schools, Akal Academies, GNDEC College, and SBSSTC University.",
+    "✔️ Register to attend live classes.",
+    "✔️ Designed for students in 8th grade and above. Introduces real-world AI skills and projects.",
+    "✔️ Bachelor’s and Master’s students are welcome to apply, especially those seeking real-world AI applications."
+  ],
+  "button1": "Register for practical AI course",
+  "button2": "Class Recording (AI sessions)",
+  "button3": "Join Live Events",
+  "button4": "Internship Opportunities",
+  "videoTitle": "Prepare kids for the future — Practical AI Classes"
+},
+
+  "instructor": {
+    "title": "Meet Your Instructor",
+    "name": "Dr. Sandeep Singh Sandha",
+    "position": "Lead Instructor",
+    "description": "Dr. Sandeep Singh Sandha is an accomplished AI researcher and educator with a Ph.D. and Master's in Computer Science from UCLA, where he was honored as the commencement speaker for the Class of 2022. He earned his B.Tech from IIT Roorkee with first-class distinction.",
+    "subtitle": "Innovator, Educator, and Visionary Leader in Advanced Technologies",
+    "expertise": {
+      "title": "Cutting-Edge AI Expertise & Global Tech Impact",
+      "points": [
+        "50+ research papers in top AI conferences like ICLR, NeurIPS — trusted voice in AI research.",
+        "Collaborated with Yann LeCun (Meta's Chief AI Scientist, Turing Award winner) — part of elite AI research circles.",
+        "Created Mango ML Library at ARM — used to design CPUs in billions of smartphones (Samsung, iPhones).",
+        "Led GenAI team at Abacus AI — built Dracarys-ver2, a model that outperforms ChatGPT-4o, Claude, Gemini in coding tasks.",
+        "Worked at Amazon, ARM, IBM, Oracle, Teradata — deep exposure to both research and production-level AI systems."
+      ]
+    },
+    "teaching": {
+      "title": "Deep Passion for Teaching & Student Mentorship",
+      "points": [
+        "Founder of ml0.ai — lets anyone build AI models without writing code, democratizing AI for non-tech users.",
+        "Guided 150+ California schools in AI/STEM through Los Angeles Computing Circle (LACC).",
+        "Trainer for faculty dev programs at IIT Roorkee — trusted mentor for top educators.",
+        "Author of 2 admission guidebooks — helping Indian students get into top U.S. universities.",
+        "Tech advisor at SimpleMindSchool.com — making complex tech easy to learn for beginners."
+      ]
+    },
+    "cta": {
+      "title": "Learn from a World-Class AI Expert",
+      "description": "Join Dr. Sandha's comprehensive AI program and gain insights from someone who has shaped the future of AI at the world's leading tech companies.",
+      "button": "Start Your AI Journey"
+    }
+  },
+  "studentGains": {
+    "title": "What Will Students Gain",
+    "subtitle": "Transform your career and unlock unlimited opportunities in the exciting world of Artificial Intelligence",
+    "achievements": [
+      {
+        "title": "Master Real-World AI Projects",
+        "description": "Build impressive portfolio projects that showcase your skills to potential employers",
+        "benefits": [
+          "Complete 5+ industry-level AI projects",
+          "Build machine learning models from scratch",
+          "Deploy AI solutions to production",
+          "Create impressive GitHub portfolio"
+        ]
+      },
+      {
+        "title": "Land High-Paying AI Jobs",
+        "description": "Secure lucrative positions at top tech companies with our comprehensive career support",
+        "benefits": [
+          "Average salary increase of 150%+",
+          "Placement assistance at Fortune 500 companies",
+          "Interview preparation and mock sessions",
+          "Resume optimization for AI roles"
+        ]
+      },
+      {
+        "title": "Join Elite AI Community",
+        "description": "Network with industry experts, researchers, and fellow AI enthusiasts",
+        "benefits": [
+          "Access to exclusive AI community",
+          "Mentorship from industry leaders",
+          "Networking events and workshops",
+          "Lifetime alumni support network"
+        ]
+      },
+      {
+        "title": "Become an AI Innovation Leader",
+        "description": "Transform from beginner to AI expert capable of leading cutting-edge projects",
+        "benefits": [
+          "Lead AI transformation initiatives",
+          "Publish research papers and articles",
+          "Speak at AI conferences and events",
+          "Start your own AI consulting business"
+        ]
+      }
+    ],
+    "startJourney": "Start Your Journey",
+    "stats": [
+      { "number": "500+", "label": "Students Placed" },
+      { "number": "₹15L+", "label": "Average Package" },
+      { "number": "50+", "label": "Partner Companies" },
+      { "number": "98%", "label": "Success Rate" }
+    ]
+  },
+  "mediaCoverage": {
+    "podcastLibrary": "Podcast Library",
+    "mediaAndPress": "Media and Press",
+    "watchNow": "Watch Now",
+    "viewMore": "View more",
+    "loadMore": "Load More Articles",
+    "stats": [
+      { "number": "50+", "label": "Podcast Episodes" },
+      { "number": "100K+", "label": "Total Views" },
+      { "number": "25+", "label": "Media Features" },
+      { "number": "15+", "label": "Press Releases" }
+    ]
+  },
+"courseDetail":{
+  "heroTitle": "Welcome to Practical AI",
+  "heroSubtitle": "Explore real-world use cases of Artificial Intelligence.",
+  "practicalAI": "Top 3 Practical AI Course Recordings",
+  "moreCourses": "Explore More AI Courses",
+  "watchNow": "Watch Now",
+  "exploreMore": "Explore More",
+  "exploreLess": "Explore Less",
+  "aboutModule": "About the module:",
+  "sessionDate": "Date of Session:",
+  "instructor": "Instructor:",
+  "keyTakeaways": "Key Takeaways:",
+  "whoJoined": "Who joined:",
+  "contactForm": {
+    "title": "Have Questions?",
+    "subtitle": "Reach out and get your doubts cleared!",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Your Email",
+    "queryPlaceholder": "Type your doubt here...",
+    "submit": "Submit",
+    "success": "Query submitted successfully!",
+    "error": "Something went wrong. Please try again."
+  },
+  "testimonials": {
+    "title": "Hear From Our Students",
+    "reviews": [
+      {
+        "name": "Ravi Sharma",
+        "text": "This course helped me understand AI from scratch!"
+      },
+      {
+        "name": "Harpreet Kaur",
+        "text": "Bohat vadhiya experience si. Real-world examples ne clarity ditti."
+      },
+      {
+        "name": "Ajay Singh",
+        "text": "AI di samajh hun asaan ho gayi. Sir ne vadhiya samjhaya."
+      }
+    ]
+  },
+  "courses": {
+    "top": [
+      {
+        "classLabel": "1st class",
+        "title": "Learn & Master AI Now",
+        "description": "This session marked the start of the Practical Artificial Intelligence Course for the April…"
+      },
+      {
+        "classLabel": "2nd class",
+        "title": "Steps in Creating AI & AI for Agriculture",
+        "description": "This session marked the start of the Practical Artificial Intelligence Course for the April…"
+      },
+      {
+        "classLabel": "3rd class",
+        "title": "Steps in Creating AI with Deeper Insights",
+        "description": "This session marked the start of the Practical Artificial Intelligence Course for the April…"
+      }
+    ],
+    "more": [
+      {
+        "title": "Age of Intelligence",
+        "img": "/Images/Card1.png",
+        "students": "1k students",
+        "duration": "1hr 20min",
+        "rating": "4.0 (300)",
+        "date": "Jan 25, 2025"
+      },
+      {
+        "title": "What is AI?",
+        "img": "/Images/Card2.png",
+        "students": "800 students",
+        "duration": "1hr 10min",
+        "rating": "4.2 (180)",
+        "date": "Jan 26, 2025"
+      },
+      {
+        "title": "AI in Daily Life",
+        "img": "/Images/Card3.png",
+        "students": "500 students",
+        "duration": "1hr 5min",
+        "rating": "4.5 (250)",
+        "date": "Jan 27, 2025"
+      },
+      {
+        "title": "AI for Beginners",
+        "img": "/Images/Card4.png",
+        "students": "600 students",
+        "duration": "1hr 15min",
+        "rating": "4.3 (220)",
+        "date": "Jan 28, 2025"
+
+      }
+    ]
+  }
+},
+
+  "events": {
+    "events": [
+      {
+        "title": "AI Orientation for B.Ed. Students (23 April)",
+        "date": "23 April",
+        "description": "Our team conducted another AI session for Bachelors of Education (B.Ed.) students at PAI-Excellence, introducing fundamentals and practical demonstrations.",
+        "moreInfo": "This session included interactive Q&A, demonstrations using AI tools like ChatGPT, and activities aimed at sparking interest in AI-driven teaching methods."
+      },
+      {
+        "title": "Online AI Orientation for Akal Academy, 100+ Schools (21 April)",
+        "date": "21 April",
+        "description": "PAI-Excellence hosted a live online AI orientation for over 100 Akal Academy schools, attended by 15,000+ students.",
+        "moreInfo": "It featured expert talks, real-time demonstrations of AI applications, and a roadmap for AI learning for school students."
+      },
+      {
+        "title": "Expert Session for Practical AI Students (29 March)",
+        "date": "29 March",
+        "description": "Dr. Sandeep Singh Sandha led an expert deep-dive session on GPU-accelerated AI for our Practical AI cohort, covering hands-on ML workflows.",
+        "moreInfo": "Advanced topics like model tuning, AI ethics, and deployment were also covered in this interactive workshop."
+      },
+      {
+        "title": "In-person AI Orientation for Akal Academy Schools (7 April)",
+        "date": "7 April",
+        "description": "PAI-Excellence delivered in-person AI workshops across multiple Akal Academy campuses, giving students live coding demonstrations.",
+        "moreInfo": "Hands-on activities helped students understand basic AI logic, and mentors answered questions related to AI career paths."
+      }
+    ],
+    "knowMore": "Know More",
+    "showLess": "Show Less"
+  },
+  "footer": {
+    "brand": "PAI-Excel",
+    "description": "Empowering innovation in AI excellence across Punjab and beyond.",
+    "quickLinks": "Quick Links",
+    "resources": "Resources",
+    "subscribe": "Subscribe",
+    "emailPlaceholder": "Enter your email",
+    "subscribeButton": "Subscribe",
+    "copyright": "© 2025 PAI-Excel. All rights reserved.",
+    "links": {
+      "home": "Home",
+      "courses": "Courses",
+      "mediaCoverage": "Media coverage",
+      "events": "Events",
+      "blog": "Blog",
+      "faqs": "FAQs",
+      "support": "Support"
+    }
+  },
+  "aboutUs": {
+    "title": "About Punjab AI Excellence",
+    "ourStory": "Our Story",
+    "storyContent1": "Punjab AI Excellence was established in 2022 with a vision to transform Punjab into a hub for artificial intelligence innovation and education. Our journey began with a small team of passionate AI researchers and educators who recognized the potential of AI to drive economic growth and improve quality of life in the region.",
+    "storyContent2": "Since our inception, we have grown rapidly, partnering with government agencies, educational institutions, and industry leaders to create a comprehensive ecosystem for AI development and learning in Punjab.",
+    "ourValues": "Our Values",
+    "values": [
+      {
+        "title": "Innovation",
+        "description": "We constantly push the boundaries of what's possible with AI, encouraging creative thinking and novel approaches to problem-solving."
+      },
+      {
+        "title": "Collaboration",
+        "description": "We believe in the power of partnerships between government, industry, academia, and the community to drive meaningful change."
+      },
+      {
+        "title": "Excellence",
+        "description": "We strive for the highest standards in everything we do, from our educational programs to our research initiatives."
+      }
+    ]
+  }
+}

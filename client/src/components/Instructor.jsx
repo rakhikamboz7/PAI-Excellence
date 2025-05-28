@@ -3,53 +3,16 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion"
 import { FileText, Users, Cpu, Brain, Code, Building, GraduationCap, BookOpen, Award, Lightbulb } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 const Instructor = () => {
-  const expertisePoints = [
-    {
-      icon: FileText,
-      text: "50+ research papers in top AI conferences like ICLR, NeurIPS — trusted voice in AI research.",
-    },
-    {
-      icon: Award,
-      text: "Collaborated with Yann LeCun (Meta's Chief AI Scientist, Turing Award winner) — part of elite AI research circles.",
-    },
-    {
-      icon: Cpu,
-      text: "Created Mango ML Library at ARM — used to design CPUs in billions of smartphones (Samsung, iPhones).",
-    },
-    {
-      icon: Brain,
-      text: "Led GenAI team at Abacus AI — built Dracarys-ver2, a model that outperforms ChatGPT-4o, Claude, Gemini in coding tasks.",
-    },
-    {
-      icon: Building,
-      text: "Worked at Amazon, ARM, IBM, Oracle, Teradata — deep exposure to both research and production-level AI systems.",
-    },
-  ]
+  const { t } = useTranslation()
 
-  const teachingPoints = [
-    {
-      icon: Code,
-      text: "Founder of ml0.ai — lets anyone build AI models without writing code, democratizing AI for non-tech users.",
-    },
-    {
-      icon: GraduationCap,
-      text: "Guided 150+ California schools in AI/STEM through Los Angeles Computing Circle (LACC).",
-    },
-    {
-      icon: Users,
-      text: "Trainer for faculty dev programs at IIT Roorkee — trusted mentor for top educators.",
-    },
-    {
-      icon: BookOpen,
-      text: "Author of 2 admission guidebooks — helping Indian students get into top U.S. universities.",
-    },
-    {
-      icon: Lightbulb,
-      text: "Tech advisor at SimpleMindSchool.com — making complex tech easy to learn for beginners.",
-    },
-  ]
+  const expertisePoints = t("instructor.expertise.points", { returnObjects: true })
+  const teachingPoints = t("instructor.teaching.points", { returnObjects: true })
+
+  const expertiseIcons = [FileText, Award, Cpu, Brain, Building]
+  const teachingIcons = [Code, GraduationCap, Users, BookOpen, Lightbulb]
 
   return (
     <section className="py-16 px-16 bg-gradient-to-br from-orange-50 to-amber-50">
@@ -62,7 +25,7 @@ const Instructor = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Meet Your Instructor</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">{t("instructor.title")}</h2>
           <div className="w-24 h-1 bg-orange-600 mx-auto rounded-full"></div>
         </motion.div>
 
@@ -80,7 +43,7 @@ const Instructor = () => {
               <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-orange-600 shadow-2xl bg-white p-2">
                 <img
                   src="/placeholder.svg?height=300&width=300"
-                  alt="Dr. Sandeep Singh Sandha"
+                  alt={t("instructor.name")}
                   className="w-full h-full object-cover rounded-full"
                 />
               </div>
@@ -90,8 +53,8 @@ const Instructor = () => {
             </div>
 
             <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Dr. Sandeep Singh Sandha</h3>
-              <p className="text-orange-600 font-semibold text-lg">Lead Instructor</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">{t("instructor.name")}</h3>
+              <p className="text-orange-600 font-semibold text-lg">{t("instructor.position")}</p>
             </div>
           </motion.div>
 
@@ -104,16 +67,10 @@ const Instructor = () => {
             className="lg:col-span-2"
           >
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-orange-100">
-              <p className="text-gray-700 leading-relaxed text-lg mb-6">
-                Dr. Sandeep Singh Sandha is an accomplished AI researcher and educator with a Ph.D. and Master's in
-                Computer Science from UCLA, where he was honored as the commencement speaker for the Class of 2022. He
-                earned his B.Tech from IIT Roorkee with first-class distinction.
-              </p>
+              <p className="text-gray-700 leading-relaxed text-lg mb-6">{t("instructor.description")}</p>
 
               <div className="bg-orange-50 border-l-4 border-orange-600 p-4 rounded-r-lg">
-                <p className="text-orange-800 font-semibold text-lg">
-                  Innovator, Educator, and Visionary Leader in Advanced Technologies
-                </p>
+                <p className="text-orange-800 font-semibold text-lg">{t("instructor.subtitle")}</p>
               </div>
             </div>
           </motion.div>
@@ -133,27 +90,30 @@ const Instructor = () => {
               <div className="bg-orange-100 p-3 rounded-xl mr-4">
                 <Brain className="w-7 h-7 text-orange-600" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900">Cutting-Edge AI Expertise & Global Tech Impact</h4>
+              <h4 className="text-xl font-bold text-gray-900">{t("instructor.expertise.title")}</h4>
             </div>
 
             <div className="space-y-4">
-              {expertisePoints.map((point, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300"
-                >
-                  <div className="bg-orange-100 p-2 rounded-lg mr-4 group-hover:bg-orange-200 transition-all duration-300">
-                    <point.icon className="w-5 h-5 text-orange-600" />
-                  </div>
-                  <p className="text-gray-700 leading-relaxed text-sm group-hover:text-gray-900 transition-colors duration-300">
-                    {point.text}
-                  </p>
-                </motion.div>
-              ))}
+              {expertisePoints.map((point, index) => {
+                const IconComponent = expertiseIcons[index]
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300"
+                  >
+                    <div className="bg-orange-100 p-2 rounded-lg mr-4 group-hover:bg-orange-200 transition-all duration-300">
+                      <IconComponent className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <p className="text-gray-700 leading-relaxed text-sm group-hover:text-gray-900 transition-colors duration-300">
+                      {point}
+                    </p>
+                  </motion.div>
+                )
+              })}
             </div>
           </motion.div>
 
@@ -169,27 +129,30 @@ const Instructor = () => {
               <div className="bg-orange-100 p-3 rounded-xl mr-4">
                 <GraduationCap className="w-7 h-7 text-orange-600" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900">Deep Passion for Teaching & Student Mentorship</h4>
+              <h4 className="text-xl font-bold text-gray-900">{t("instructor.teaching.title")}</h4>
             </div>
 
             <div className="space-y-4">
-              {teachingPoints.map((point, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300"
-                >
-                  <div className="bg-orange-100 p-2 rounded-lg mr-4 group-hover:bg-orange-200 transition-all duration-300">
-                    <point.icon className="w-5 h-5 text-orange-600" />
-                  </div>
-                  <p className="text-gray-700 leading-relaxed text-sm group-hover:text-gray-900 transition-colors duration-300">
-                    {point.text}
-                  </p>
-                </motion.div>
-              ))}
+              {teachingPoints.map((point, index) => {
+                const IconComponent = teachingIcons[index]
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-start group hover:bg-orange-50 p-3 rounded-lg transition-all duration-300"
+                  >
+                    <div className="bg-orange-100 p-2 rounded-lg mr-4 group-hover:bg-orange-200 transition-all duration-300">
+                      <IconComponent className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <p className="text-gray-700 leading-relaxed text-sm group-hover:text-gray-900 transition-colors duration-300">
+                      {point}
+                    </p>
+                  </motion.div>
+                )
+              })}
             </div>
           </motion.div>
         </div>
@@ -203,17 +166,14 @@ const Instructor = () => {
           className="text-center mt-12"
         >
           <div className="bg-gradient-to-r from-orange-600 to-amber-600 text-white rounded-2xl p-8 max-w-3xl mx-auto shadow-2xl">
-            <h3 className="text-2xl font-bold mb-4">Learn from a World-Class AI Expert</h3>
-            <p className="text-orange-100 mb-6 text-lg">
-              Join Dr. Sandha's comprehensive AI program and gain insights from someone who has shaped the future of AI
-              at the world's leading tech companies.
-            </p>
+            <h3 className="text-2xl font-bold mb-4">{t("instructor.cta.title")}</h3>
+            <p className="text-orange-100 mb-6 text-lg">{t("instructor.cta.description")}</p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white text-orange-600 px-8 py-3 rounded-lg font-bold hover:bg-orange-50 transition duration-300 shadow-lg"
             >
-              Start Your AI Journey
+              {t("instructor.cta.button")}
             </motion.button>
           </div>
         </motion.div>
