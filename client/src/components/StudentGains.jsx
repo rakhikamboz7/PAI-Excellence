@@ -78,15 +78,15 @@ const StudentGains = () => {
           title: "text-yellow-400 themed-text-primary",
           gradient: "from-gray-900 via-zinc-800 to-gray-800",
           iconGradient: [
-            "from-yellow-600 to-yellow-400",
+            "from-yellow-400 to-yellow-400",
             "from-yellow-500 to-yellow-300",
             "from-gray-600 to-zinc-400",
             "from-zinc-300 to-yellow-400",
           ],
           line: "bg-yellow-400",
           button: "bg-gradient-to-r from-yellow-600 to-yellow-400 text-gray-900 hover:from-yellow-700 hover:to-yellow-500",
-          dotActive: "bg-yellow-500",
-          dot: "bg-gray-500 hover:bg-gray-300"
+          dotActive: "bg-yellow-900",
+          dot: "bg-gray-800 hover:bg-gray-300"
         };
       default:
         // orange theme
