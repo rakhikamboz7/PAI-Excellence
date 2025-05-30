@@ -14,13 +14,23 @@ const resources = {
   },
 }
 
+// Get saved language from localStorage or default to 'en'
+const savedLanguage = typeof window !== "undefined" ? localStorage.getItem("selectedLanguage") || "en" : "en"
+
 i18n.use(initReactI18next).init({
   resources,
-  lng: "en", // default language
+  lng: savedLanguage, // Use saved language
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,
   },
+})
+
+// Save language to localStorage whenever it changes
+i18n.on("languageChanged", (lng) => {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("selectedLanguage", lng)
+  }
 })
 
 export default i18n

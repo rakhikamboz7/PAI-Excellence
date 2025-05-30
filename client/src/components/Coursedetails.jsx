@@ -1,68 +1,134 @@
-
-import React, { useState } from "react"
-import { FaUser, FaClock, FaStar } from "react-icons/fa"
-import { useTranslation } from "react-i18next"
+import React, { useState } from "react";
+import { FaUser, FaClock, FaStar } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+import { useTheme } from "../contexts/ThemeContext";
 
 export default function CourseDetail() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
+  const { currentTheme } = useTheme();
+
+  // Define theme class mappings
+  const getThemeClasses = () => {
+    switch (currentTheme) {
+      case "blue":
+        return {
+          background: "bg-blue-light themed-surface",
+          text: "text-blue-text themed-text-secondary",
+          title: "text-blue-primary themed-text-primary",
+          accent: "text-blue-600",
+          surface: "bg-blue-50",
+          border: "border-blue-200",
+          button: "bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-semibold",
+          gradient: "bg-gradient-to-r from-blue-600 to-blue-400 text-white",
+        };
+      case "purple":
+        return {
+          background: "bg-purple-light themed-surface",
+          text: "text-purple-text themed-text-secondary",
+          title: "text-purple-primary themed-text-primary",
+          accent: "text-purple-600",
+          surface: "bg-purple-50",
+          border: "border-purple-200",
+          button: "bg-gradient-to-r from-purple-600 to-purple-400 hover:from-purple-700 hover:to-purple-500 text-white font-semibold",
+          gradient: "bg-gradient-to-r from-purple-600 to-purple-400 text-white",
+        };
+      case "green":
+        return {
+          background: "bg-green-light themed-surface",
+          text: "text-green-text themed-text-secondary",
+          title: "text-green-primary themed-text-primary",
+          accent: "text-green-600",
+          surface: "bg-green-50",
+          border: "border-green-200",
+          button: "bg-gradient-to-r from-green-600 to-green-400 hover:from-green-700 hover:to-green-500 text-white font-semibold",
+          gradient: "bg-gradient-to-r from-green-600 to-green-400 text-white",
+        };
+      case "dark":
+        return {
+          background: "bg-dark-light themed-surface",
+          text: "text-gray-300 themed-text-secondary",
+          title: "text-yellow-400 themed-text-primary",
+          accent: "text-yellow-400",
+          surface: "bg-gray-800",
+          border: "border-gray-700",
+          button: "bg-gradient-to-r from-yellow-500 to-yellow-400 hover:from-yellow-700 hover:to-yellow-500 text-gray-900 font-semibold",
+          gradient: "bg-gradient-to-r from-yellow-600 to-yellow-400 text-gray-900",
+        };
+      default: // orange theme
+        return {
+          background: "bg-orange-50 themed-surface",
+          text: "text-gray-700 themed-text-secondary",
+          title: "text-orange-600 themed-text-primary",
+          accent: "text-amber-600",
+          surface: "bg-white",
+          border: "border-orange-100",
+          button: "bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-500 text-white font-semibold",
+          gradient: "bg-gradient-to-r from-orange-600 to-amber-600 text-white",
+        };
+    }
+  };
+
+  const themeClasses = getThemeClasses();
+
   // Fetch course arrays from translation JSON
-  const topCourses = t("courseDetail.courses.top", { returnObjects: true }) || []
-  const moreCourses = t("courseDetail.courses.more", { returnObjects: true }) || []
-  const testimonials = t("courseDetail.testimonials.reviews", { returnObjects: true }) || []
+  const topCourses = t("courseDetail.courses.top", { returnObjects: true }) || [];
+  const moreCourses = t("courseDetail.courses.more", { returnObjects: true }) || [];
+  const testimonials = t("courseDetail.testimonials.reviews", { returnObjects: true }) || [];
 
-  const [modalCourse, setModalCourse] = useState(null)
-  const openModal = (course) => setModalCourse(course)
-  const closeModal = () => setModalCourse(null)
+  const [modalCourse, setModalCourse] = useState(null);
+  const openModal = (course) => setModalCourse(course);
+  const closeModal = () => setModalCourse(null);
+
   const handleWatchNow = (e) => {
-    e?.stopPropagation?.()
-    window.location.href = "https://www.youtube.com/embed/JIKf55ZBPes?si=3WSSi0REj7YCKgj6"
-  }
+    e?.stopPropagation?.();
+    window.location.href = "https://www.youtube.com/embed/JIKf55ZBPes?si=3WSSi0REj7YCKgj6";
+  };
 
-  const [showAll, setShowAll] = useState(false)
-  const displayedCourses = showAll ? moreCourses : moreCourses.slice(0, 2) // Only 3 sample entries, so show max 2 unless "ਹੋਰ ਵੇਖੋ"
+  const [showAll, setShowAll] = useState(false);
+  const displayedCourses = showAll ? moreCourses : moreCourses.slice(0, 2); // Only 3 sample entries, so show max 2 unless "ਹੋਰ ਵੇਖੋ"
 
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
-  const [formStatus, setFormStatus] = useState(null)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [formStatus, setFormStatus] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const res = await fetch("http://localhost:5000/api/doubts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, message }),
-      })
+      });
       if (res.ok) {
-        setFormStatus("success")
-        setName("")
-        setEmail("")
-        setMessage("")
+        setFormStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
       } else {
-        setFormStatus("error")
+        setFormStatus("error");
       }
     } catch {
-      setFormStatus("error")
+      setFormStatus("error");
     }
-  }
+  };
 
   return (
-    <div className="min-h-screen font-sans bg-gray-50">
+    <div className={`${themeClasses.background} ${themeClasses.text} min-h-screen font-sans transition-colors duration-300`}>
       {/* Hero Section */}
       <section
         className="relative h-[360px] bg-cover bg-center flex items-center justify-start px-6 lg:px-20"
         style={{ backgroundImage: "url('/Hero.png')" }}
       >
         <div className="relative z-10 w-full lg:w-1/2 text-left text-white">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t("courseDetail.heroTitle")}</h2>
+          <h2 className={`text-3xl lg:text-4xl font-bold mb-4 ${themeClasses.title}`}>{t("courseDetail.heroTitle")}</h2>
           <p className="max-w-md text-lg opacity-90">{t("courseDetail.heroSubtitle")}</p>
         </div>
       </section>
 
       {/* Top 3 Practical AI Course Recordings */}
       <section className="container mx-auto px-6 lg:px-20 py-12">
-        <h3 className="text-2xl font-semibold mb-6 text-[#44425A]">{t("courseDetail.practicalAI")}</h3>
+        <h3 className={`text-2xl font-semibold mb-6 ${themeClasses.title}`}>{t("courseDetail.practicalAI")}</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
           {topCourses.map(({ classLabel, title, description }, idx) => (
             <div
@@ -73,12 +139,12 @@ export default function CourseDetail() {
                 <span className="inline-block text-xs text-[#6C6A74] bg-[#EBEAEF] px-3 py-1 rounded-full mb-4">
                   {classLabel}
                 </span>
-                <h4 className="text-lg font-bold mb-2 text-[#44425A]">{title}</h4>
+                <h4 className={`text-lg font-bold mb-2 ${themeClasses.title}`}>{title}</h4>
                 <p className="text-sm text-[#6C6A74] leading-relaxed">{description}</p>
               </div>
               <button
                 onClick={handleWatchNow}
-                className="mx-4 mb-4 py-3 text-center text-white bg-[#FF6600] font-semibold rounded-full hover:brightness-90 transition"
+                className={`mx-4 mb-4 py-3 text-center ${themeClasses.button} text-white bg-[#FF6600] font-semibold rounded-full hover:brightness-90 transition`}
               >
                 {t("courseDetail.watchNow")} &rarr;
               </button>
@@ -89,7 +155,7 @@ export default function CourseDetail() {
 
       {/* More Courses Grid */}
       <section className="container mx-auto px-6 lg:px-20 py-12 rounded-t-3xl">
-        <h3 className="text-2xl font-semibold mb-6 text-[#44425A]">{t("courseDetail.moreCourses")}</h3>
+        <h3 className={`text-2xl font-semibold mb-6 ${themeClasses.title}`}>{t("courseDetail.moreCourses")}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayedCourses.map((course, idx) => (
             <div
@@ -105,7 +171,7 @@ export default function CourseDetail() {
                   <FaClock className="ml-4 text-[#FF6600]" />
                   <span>{course.duration}</span>
                 </div>
-                <h4 className="text-lg font-semibold mb-2 text-[#44425A]">{course.title}</h4>
+                <h4 className={`text-lg font-semibold mb-2 ${themeClasses.title}`}>{course.title}</h4>
                 <hr className="border-gray-200 mb-2" />
                 <div className="flex items-center mb-4">
                   <FaStar className="text-[#FF6600] mr-1" />
@@ -114,7 +180,8 @@ export default function CourseDetail() {
                 <div className="flex justify-between items-center"></div>
                 <button
                   onClick={(e) => { e.stopPropagation(); handleWatchNow(e); }}
-                  className="bg-[#FF6600] text-white text-sm font-semibold rounded-full px-4 py-2 hover:brightness-90 transition mt-2"
+                  className={`bg-[#FF6600] text-white ${themeClasses.button} text-sm font-semibold rounded-full px-4 py-2 hover:brightness-90 transition mt-2`
+                }
                 >
                   {t("courseDetail.watchNow")}
                 </button>
@@ -126,7 +193,7 @@ export default function CourseDetail() {
         <div className="text-center mt-8">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="px-6 py-3 bg-[#FF6600] text-white font-semibold rounded-full hover:brightness-90 transition"
+            className={`px-6 py-3 bg-[#FF6600] ${themeClasses.button} text-white font-semibold rounded-full hover:brightness-90 transition`}
           >
             {showAll ? t("courseDetail.exploreLess") : t("courseDetail.exploreMore")}
           </button>
@@ -138,7 +205,7 @@ export default function CourseDetail() {
               <button onClick={closeModal} className="absolute top-2 right-2 text-gray-500 hover:text-gray-800" aria-label="close modal">
                 &times;
               </button>
-              <h3 className="text-xl font-bold mb-2 text-[#44425A]">
+              <h3 className={`text-xl font-bold mb-2 ${themeClasses.title}`}>
                 {t("courseDetail.aboutModule")} {modalCourse.title}
               </h3>
               <p className="text-sm text-[#6C6A74] mb-2">
@@ -155,7 +222,7 @@ export default function CourseDetail() {
               </p>
               <button
                 onClick={handleWatchNow}
-                className="w-full py-2 bg-[#FF6600] text-white font-semibold rounded-full hover:brightness-90 transition"
+                className={`w-full py-2 bg-[#FF6600] ${themeClasses.button} text-white font-semibold rounded-full hover:brightness-90 transition`}
               >
                 {t("courseDetail.watchNow")} &rarr;
               </button>
@@ -165,8 +232,8 @@ export default function CourseDetail() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="container mx-auto px-6 lg:px-20 pt-12 pb-12 bg-[#EBEAEF]">
-        <h3 className="text-2xl font-semibold mb-2 text-center text-[#44425A]">
+      <section className={`${themeClasses.surface} container mx-auto px-6 lg:px-20 pt-12 pb-12`}>
+        <h3 className={`text-2xl font-semibold mb-2 text-center ${themeClasses.title}`}>
           {t("courseDetail.contactForm.title")}
         </h3>
         <p className="text-center text-sm mb-6 text-[#6C6A74]">{t("courseDetail.contactForm.subtitle")}</p>
@@ -200,7 +267,7 @@ export default function CourseDetail() {
           />
           <button
             type="submit"
-            className="w-full px-4 py-3 rounded-full bg-[#FF6600] text-white font-semibold hover:brightness-90 transition"
+            className={`w-full px-4 py-3 ${themeClasses.button} rounded-full bg-[#FF6600] text-white font-semibold hover:brightness-90 transition`}
           >
             {t("courseDetail.contactForm.submit")}
           </button>
@@ -214,8 +281,8 @@ export default function CourseDetail() {
       </section>
 
       {/* Testimonials */}
-      <section className="container mx-auto px-6 lg:px-20 py-12 bg-white">
-        <h3 className="text-3xl font-semibold text-[#44425A] text-center mb-8">
+      <section className={`${themeClasses.surface} container mx-auto px-6 lg:px-20 py-12`}>
+        <h3 className={`text-3xl font-semibold text-center ${themeClasses.title} mb-8`}>
           {t("courseDetail.testimonials.title")}
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -239,6 +306,5 @@ export default function CourseDetail() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-

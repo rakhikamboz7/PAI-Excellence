@@ -1,15 +1,27 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { Menu, X } from "lucide-react"
 import { useTranslation } from "react-i18next"
+import { useTheme } from "../contexts/ThemeContext"
 import LanguageToggle from "./LanguageToggle"
+import ThemeSwitcher from "./ThemeSwitcher"
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showThemeSwitcher, setShowThemeSwitcher] = useState(false)
   const location = useLocation()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const { currentTheme } = useTheme()
+
+  // Ensure language persistence on navbar load
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("selectedLanguage")
+    if (savedLanguage && savedLanguage !== i18n.language) {
+      i18n.changeLanguage(savedLanguage)
+    }
+  }, [i18n])
 
   const navItems = [
     { name: t("navbar.home"), href: "/" },
@@ -22,12 +34,70 @@ const Navbar = () => {
     setIsMenuOpen((open) => !open)
   }
 
+  // Get theme-specific classes
+  const getThemeClasses = () => {
+    switch (currentTheme) {
+      case "blue":
+        return {
+          surface: "bg-white",
+          logo: "text-blue-primary",
+          text: "text-blue-text",
+          border: "border-blue-primary",
+          background: "bg-blue-light",
+          button: "bg-blue-50 border-blue-200 hover:bg-blue-100",
+        }
+      case "purple":
+        return {
+          surface: "bg-white",
+          logo: "text-purple-primary",
+          text: "text-purple-text",
+          border: "border-purple-primary",
+          background: "bg-purple-light",
+          button: "bg-purple-50 border-purple-200 hover:bg-purple-100",
+        }
+      case "green":
+        return {
+          surface: "bg-white",
+          logo: "text-green-primary",
+          text: "text-green-text",
+          border: "border-green-primary",
+          background: "bg-green-light",
+          button: "bg-green-50 border-green-200 hover:bg-green-100",
+        }
+      case "dark":
+        return {
+          surface: "bg-dark-light",
+          logo: "text-dark-primary",
+          text: "text-dark-text",
+          border: "border-dark-primary",
+          background: "bg-dark-dark",
+          button: "bg-dark-dark border-gray-600 hover:bg-gray-800",
+        }
+      default:
+        return {
+          surface: "bg-white",
+          logo: "text-orange-600",
+          text: "text-gray-700",
+          border: "border-orange-500",
+          background: "bg-orange-50",
+          button: "bg-orange-50 border-orange-200 hover:bg-orange-100",
+        }
+    }
+  }
+
+  const themeClasses = getThemeClasses()
+
   return (
     <>
-      <nav className="bg-white shadow-sm py-7 px-4 md:px-16 sticky top-0 z-50">
+      <nav
+        className={`${themeClasses.surface} shadow-sm py-7 px-4 md:px-16 sticky top-0 z-50 transition-colors duration-300 themed-surface`}
+      >
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center">
-            <a href="/" className="text-4xl font-bold text-orange-600">
+            <a
+              href="/"
+              className={`text-4xl font-bold ${themeClasses.logo} themed-text-primary transition-colors duration-300`}
+            >
               P<b>AI</b> Excel
             </a>
           </div>
@@ -38,10 +108,10 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className={`text-gray-700 transition-all duration-200 pb-1 ${
+                className={`${themeClasses.text} transition-all duration-200 pb-1 themed-text-secondary ${
                   location.pathname === item.href
-                    ? "font-bold border-b-4 border-orange-500"
-                    : "hover:font-bold hover:border-b-4 hover:border-orange-500"
+                    ? `font-bold border-b-4 ${themeClasses.border}`
+                    : `hover:font-bold hover:border-b-4 hover:${themeClasses.border}`
                 }`}
               >
                 {item.name}
@@ -49,39 +119,79 @@ const Navbar = () => {
             ))}
           </div>
 
+          {/* Theme Switcher Button */}
+          <div className="hidden md:flex items-center space-x-4">
+            <button
+              onClick={() => setShowThemeSwitcher(!showThemeSwitcher)}
+              className={`p-2 rounded-lg ${themeClasses.button} transition-colors duration-200`}
+              aria-label="Toggle theme switcher"
+            >
+              <svg
+                className={`w-5 h-5 ${themeClasses.logo} themed-text-primary`}
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M4 2a2 2 0 00-2 2v11a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm0 2h12v11H4V4z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button onClick={toggleMenu} className="text-gray-700" aria-label="Toggle menu">
+            <button
+              onClick={toggleMenu}
+              className={`${themeClasses.text} themed-text-secondary`}
+              aria-label="Toggle menu"
+            >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
+        {/* Theme Switcher Dropdown */}
+        {showThemeSwitcher && (
+          <div className="absolute top-full right-4 md:right-16 mt-2 z-50">
+            <ThemeSwitcher />
+          </div>
+        )}
+
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-white shadow-md py-4 px-6 z-50">
+          <div
+            className={`md:hidden absolute top-20 left-0 right-0 ${themeClasses.surface} shadow-md py-4 px-6 z-50 themed-surface`}
+          >
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`text-gray-700 transition-all duration-200 pb-1 ${
+                  className={`${themeClasses.text} transition-all duration-200 pb-1 themed-text-secondary ${
                     location.pathname === item.href
-                      ? "font-bold border-b-4 border-orange-500"
-                      : "hover:font-bold hover:border-b-4 hover:border-orange-500"
+                      ? `font-bold border-b-4 ${themeClasses.border}`
+                      : `hover:font-bold hover:border-b-4 hover:${themeClasses.border}`
                   }`}
                 >
                   {item.name}
                 </a>
               ))}
+              {/* Mobile Theme Switcher */}
+              <div className="pt-4 border-t border-gray-200">
+                <ThemeSwitcher />
+              </div>
             </div>
           </div>
         )}
       </nav>
 
       {/* Language Toggle Bar */}
-      <div className="bg-orange-50 border-b border-orange-200 py-2 px-4 md:px-16">
+      <div
+        className={`${themeClasses.background} border-b ${themeClasses.border} py-2 px-4 md:px-16 transition-colors duration-300`}
+      >
         <div className="container mx-auto flex justify-end">
           <LanguageToggle />
         </div>
