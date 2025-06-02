@@ -261,7 +261,7 @@ const Hero = () => {
         {/* Slide image left */}
         <div className="flex-1 flex justify-center items-center">
           <Card
-            className="rounded-xl overflow-hidden shadow-2xl max-w-lg w-[80%] mx-auto animate-fade-in"
+            className="rounded-xl ml-20 overflow-hidden shadow-2xl max-w-lg w-[90%] mx-auto animate-fade-in"
             style={{
               background: "var(--surface-color, #dbeafe)",
               border: "1px solid var(--border-color, #93c5fd)"
@@ -304,14 +304,14 @@ const Hero = () => {
         {/* AI accent right */}
         <div className="flex-1 hidden md:flex items-center justify-center">
           <div
-            className="rounded-xl shadow-lg flex flex-col items-center gap-2 p-8 border animate-fade-in-late"
+            className="rounded-xl shadow-lg flex flex-col items-center gap-2 p-4 border animate-fade-in-late"
             style={{
               background: "var(--background-color,#eff6ff)",
               border: "1.5px solid var(--border-color,#93c5fd)"
             }}
           >
             <span
-              className="text-3xl font-extrabold tracking-tight font-mono"
+              className="text-2xl font-extrabold tracking-tight font-mono"
               style={{ color: "var(--primary-color,#1e40af)" }}
             >
               Know About Instructors
