@@ -257,11 +257,11 @@ const Hero = () => {
 
   function renderImageSlide(slide) {
     return (
-      <div className="flex flex-col md:flex-row h-full items-center min-h-[80vh] relative px-6 md:px-24">
+      <div className="flex mr-20 flex-col md:flex-row h-full items-center min-h-[80vh] relative px-6 md:px-24">
         {/* Slide image left */}
-        <div className="flex-1 flex justify-center items-center">
+        <div className="mr-20 flex-1 flex justify-center items-center">
           <Card
-            className="rounded-xl ml-20 overflow-hidden shadow-2xl max-w-lg w-[90%] mx-auto animate-fade-in"
+            className="rounded-xl mr-20 overflow-hidden shadow-2xl max-w-lg w-[90%] mx-auto animate-fade-in"
             style={{
               background: "var(--surface-color, #dbeafe)",
               border: "1px solid var(--border-color, #93c5fd)"
@@ -302,7 +302,7 @@ const Hero = () => {
           </Card>
         </div>
         {/* AI accent right */}
-        <div className="flex-1 hidden md:flex items-center justify-center">
+        <div className="flex-1 ml-30 hidden md:flex items-center justify-center">
           <div
             className="rounded-xl shadow-lg flex flex-col items-center gap-2 p-4 border animate-fade-in-late"
             style={{
