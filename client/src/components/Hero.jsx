@@ -40,7 +40,7 @@ const SLIDES = [
   {
     id: 0,
     type: "content",
-    title: "Namaste! Want to be an AI Expert?",
+    title: "Welcome! Want to be an AI Expert?",
     subtitle: "Learn. Innovate. Excel.",
     description:
       "Our vision: To create AI experts in remote corners of India, with a focus on Punjab. We target school students and university graduates. So far, we've conducted live sessions for 50,000+ students. We are collaborating with Akal Academies to provide AI learning to 100+ schools across Punjab.",
