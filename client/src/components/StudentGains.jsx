@@ -228,14 +228,14 @@ const StudentGains = () => {
                         </div>
                         <div>
                           <h3 className={`text-3xl font-bold ${themeClasses.title}`}>{achievement.title}</h3>
-                          <p className={`${themeClasses.title} font-semibold`}>{t("studentGains.achievementLabel", { number: index + 1 })}</p>
+                          <p className={`${themeClasses.title} font-semibold`}>{achievement.achievementLabel}</p>
                         </div>
                       </div>
                       <p className={`text-xl ${themeClasses.text} leading-relaxed`}>{achievement.description}</p>
                       <div className={`bg-white p-6 rounded-2xl shadow-lg ${themeClasses.border}`}>
                         <h4 className={`text-lg font-bold mb-4 flex items-center ${themeClasses.title}`}>
                           <Target className={`w-5 h-5 mr-2 ${themeClasses.title}`} />
-                          {t("studentGains.keyBenefits")}
+                          {achievement.benefitTitle}
                         </h4>
                         <ul className="space-y-3">
                           {achievement.benefits.map((benefit, benefitIndex) => (

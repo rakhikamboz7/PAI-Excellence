@@ -88,18 +88,18 @@ const BatchesSection = () => {
       date: t("batches.liveClass.time").split(",")[1],
       time: t("batches.liveClass.time").split(",")[0],
       icon: <Clock size={18} aria-label="clock icon" />,
-      ctaText: "Register"
+      ctaText: t("batches.liveClass.register")
     },
     {
       id: 3,
       type: "class",
-      title: "Data Analysis Live Class Tomorrow!",
+      title: t("batches.DataAnalysisClass.title"),
       description:
-        "Learn the fundamentals of Data Analysis in our upcoming live class. Register now to secure your spot!",
-      date: "Tomorrow",
-      time: "",
+        t("batches.DataAnalysisClass.description"),
+      date: t("batches.DataAnalysisClass.startDate"),
+      time: t("batches.DataAnalysisClass.time"),
       icon: <Calendar size={18} aria-label="calendar icon" />,
-      ctaText: "Register"
+      ctaText: t("batches.liveClass.register")
     }
   ];
 
