@@ -128,7 +128,7 @@ function GradientGridBackground({ theme }) {
       </svg>
       {/* AI motif, only one subtle symbol on the right */}
       <span
-        className="absolute right-14 top-2/3 text-[1.6rem] font-mono select-none animate-fade-in-late"
+        className="absolute right-14 top-2/3 text-[1.2rem] font-mono select-none animate-fade-in-late"
         style={{ color: overlay, opacity: 0.18 }}
       >
         &lt;/ai&gt;
@@ -171,7 +171,7 @@ const Hero = () => {
         {/* Text Left */}
         <div className="flex-1 py-16 flex flex-col gap-3 md:gap-6 z-10">
           <p
-            className="text-lg md:text-xl font-medium tracking-wider animate-fade-in"
+            className="text-2xl md:text-xl font-medium tracking-wider animate-fade-in"
             style={{
               animationDelay: "0.1s",
               color: "var(--accent-color, #60a5fa)",
@@ -181,7 +181,7 @@ const Hero = () => {
             {slide.subtitle}
           </p>
           <h1
-            className="text-4xl md:text-6xl mb-2 md:mb-4 font-extrabold bg-gradient-to-r bg-clip-text text-transparent animate-fade-in"
+            className="text-4xl md:text-5xl mb-2 md:mb-4 font-extrabold bg-gradient-to-r bg-clip-text text-transparent animate-fade-in"
             style={{
               animationDelay: "0.2s",
               backgroundImage:
@@ -227,7 +227,7 @@ const Hero = () => {
         <div className="flex-1 hidden md:flex justify-center items-center">
           <div className="relative">
             <div
-              className="w-64 h-64 rounded-full p-2 shadow-lg overflow-hidden"
+              className="w-60 h-60 rounded-full p-2 shadow-lg overflow-hidden"
               style={{
                 border: "4px solid var(--primary-color, #1e40af)",
                 background: "linear-gradient(135deg, var(--primary-color, #1e40af)11 60%, transparent)",
@@ -236,12 +236,12 @@ const Hero = () => {
               <img
                 src={slide.ceoImage || "/placeholder.svg"}
                 alt="CEO"
-                className="w-full h-full rounded-full object-cover"
+                className="w-50 h-50 rounded-full object-cover"
                 style={{ filter: "brightness(0.92)" }}
               />
             </div>
             <div
-              className="absolute -bottom-4 -right-6 px-4 py-2 rounded-2xl font-mono shadow-md text-lg font-medium select-none opacity-80 animate-ai-accent"
+              className="absolute -bottom-0 -right-0 px-4 py-2 rounded-2xl font-mono shadow-md text-lg font-medium select-none opacity-80 animate-ai-accent"
               style={{
                 color: "#fff",
                 background: "var(--secondary-color, #3b82f6)",
@@ -261,7 +261,7 @@ const Hero = () => {
         {/* Slide image left */}
         <div className="flex-1 flex justify-center items-center">
           <Card
-            className="rounded-xl overflow-hidden shadow-2xl max-w-lg w-[95%] mx-auto animate-fade-in"
+            className="rounded-xl overflow-hidden shadow-2xl max-w-lg w-[80%] mx-auto animate-fade-in"
             style={{
               background: "var(--surface-color, #dbeafe)",
               border: "1px solid var(--border-color, #93c5fd)"
@@ -311,7 +311,7 @@ const Hero = () => {
             }}
           >
             <span
-              className="text-5xl font-extrabold tracking-tight font-mono"
+              className="text-3xl font-extrabold tracking-tight font-mono"
               style={{ color: "var(--primary-color,#1e40af)" }}
             >
               Know About Instructors
