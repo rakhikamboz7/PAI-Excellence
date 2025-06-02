@@ -244,7 +244,7 @@ const Hero = () => {
               className="absolute -bottom-0 -right-0 px-4 py-2 rounded-2xl font-mono shadow-md text-lg font-medium select-none opacity-80 animate-ai-accent"
               style={{
                 color: "#fff",
-                background: "var(--secondary-color, #3b82f6)",
+                background: "var(--secondary-color,rgb(13, 50, 109))",
               }}
             >
               AI
@@ -257,76 +257,88 @@ const Hero = () => {
 
   function renderImageSlide(slide) {
     return (
-      <div className="flex mr-20 flex-col md:flex-row h-full items-center min-h-[80vh] relative px-6 md:px-24">
-        {/* Slide image left */}
-        <div className="flex-1 flex justify-center items-center">
-          <Card
-            className="rounded-xl overflow-hidden shadow-2xl max-w-lg w-[90%] mx-auto animate-fade-in"
+      
+  <div className="flex flex-col md:flex-row h-full items-center min-h-[80vh] relative px-4 md:px-16 max-w-[1400px] mx-auto">
+    {/* Slide image left - Made narrower */}
+    <div className="w-full md:w-2/5 flex justify-center items-center">
+      <Card
+        className="rounded-xl overflow-hidden shadow-2xl w-[85%] mx-auto animate-fade-in"
+        style={{
+          background: "var(--surface-color, #dbeafe)",
+          border: "1px solid var(--border-color, #93c5fd)"
+        }}
+      >
+        <img
+          src={slide.image || "/placeholder.svg"}
+          alt="Hero"
+          className="w-full h-64 object-cover" // Reduced height
+          style={{
+            filter: "brightness(0.89)",
+            borderRadius: "16px 16px 0 0"
+          }}
+        />
+        <div className="p-4"> {/* Reduced padding */}
+          <h2
+            className="text-xl md:text-2xl font-bold mb-2" // Smaller text
+            style={{ color: "var(--primary-color, #1e40af)" }}
+          >
+            {slide.title}
+          </h2>
+          <p
+            className="text-sm mb-3" // Smaller text
+            style={{ color: "var(--text-secondary, #3730a3)" }}
+          >
+            {slide.subtitle}
+          </p>
+          <button
+            className="rounded px-5 py-1.5 text-sm font-bold shadow hover:scale-105 transition-all themed-button-primary" // Smaller button
             style={{
-              background: "var(--surface-color, #dbeafe)",
-              border: "1px solid var(--border-color, #93c5fd)"
+              border: "none",
+              outline: "none",
             }}
           >
-            <img
-              src={slide.image || "/placeholder.svg"}
-              alt="Hero"
-              className="w-full h-72 object-cover"
-              style={{
-                filter: "brightness(0.89)",
-                borderRadius: "16px 16px 0 0"
-              }}
-            />
-            <div className="p-5">
-              <h2
-                className="text-2xl md:text-3xl font-bold mb-2"
-                style={{ color: "var(--primary-color, #1e40af)" }}
-              >
-                {slide.title}
-              </h2>
-              <p
-                className="text-base mb-3"
-                style={{ color: "var(--text-secondary, #3730a3)" }}
-              >
-                {slide.subtitle}
-              </p>
-              <button
-                className="rounded px-6 py-2 font-bold shadow hover:scale-105 transition-all themed-button-primary"
-                style={{
-                  border: "none",
-                  outline: "none",
-                }}
-              >
-                {slide.button}
-              </button>
-            </div>
-          </Card>
+            {slide.button}
+          </button>
         </div>
-        {/* AI accent right */}
-        <div className="flex-1 hidden md:flex items-center justify-center">
-          <div
-            className="rounded-xl shadow-lg flex flex-col items-center gap-2 p-4 border animate-fade-in-late"
-            style={{
-              background: "var(--background-color,#eff6ff)",
-              border: "1.5px solid var(--border-color,#93c5fd)"
-            }}
-          >
-            <span
-              className="text-2xl font-extrabold tracking-tight font-mono"
-              style={{ color: "var(--primary-color,#1e40af)" }}
-            >
-              Know About Instructors
-            </span>
-            <span
-              className="text-sm font-semibold mt-1 tracking-widest"
-              style={{ color: "var(--text-secondary,#3730a3)", opacity: 0.75 }}
-            >
-             Dr. Sandeep Singh Sandha holds a Ph.D. in Computer Science from UCLA and a B.Tech from IIT Roorkee. Dr. Inderjot Kaur holds a Ph.D. and has completed a postdoctoral fellowship at Mississippi State University, along with a B.Tech from NIT Jalandhar. With over a decade of experience, they have worked at top technology companies like Amazon, Caterpillar, Oracle, IBM, ARM, Abacus.AI, and Teradata, leading advancements in AI and machine learning. Both instructors combine strong academic credentials, extensive industry experience, and groundbreaking research to deliver high-impact education.
-            </span>
-          </div>
-        </div>
+      </Card>
+    </div>
+
+    {/* AI accent right - Wider for instructor info */}
+    <div className="hidden md:flex w-full md:w-3/5 items-start justify-center pl-8">
+      <div
+        className="rounded-xl shadow-md flex flex-col items-start gap-2 p-6 border animate-fade-in-late"
+        style={{
+          background: "var(--background-color,#eff6ff)",
+          border: "1.5px solid var(--border-color,#93c5fd)",
+          maxWidth: "600px" // Control maximum width
+        }}
+      >
+        <span
+          className="text-2xl font-extrabold tracking-tight font-mono mb-2"
+          style={{ color: "var(--primary-color,#1e40af)" }}
+        >
+          Know About Instructors
+        </span>
+        <span
+          className="text-sm leading-relaxed" // Better line height for readability
+          style={{ color: "var(--text-secondary,#3730a3)", opacity: 0.75 }}
+        >
+          Dr. Sandeep Singh Sandha holds a Ph.D. in Computer Science from UCLA and a B.Tech from IIT Roorkee. 
+          Dr. Inderjot Kaur holds a Ph.D. and has completed a postdoctoral fellowship at Mississippi State University, 
+          along with a B.Tech from NIT Jalandhar.
+          
+          <br/><br/> {/* Added spacing between paragraphs */}
+          
+          With over a decade of experience, they have worked at top technology companies like Amazon, 
+          Caterpillar, Oracle, IBM, ARM, Abacus.AI, and Teradata, leading advancements in AI and 
+          machine learning. Both instructors combine strong academic credentials, extensive industry 
+          experience, and groundbreaking research to deliver high-impact education.
+        </span>
       </div>
-    );
-  }
+    </div>
+  </div>
+);
+}
 
   const bgClass = getThemeBackgroundClass(currentTheme);
 
@@ -410,9 +422,9 @@ const Hero = () => {
           <Card
             className="rounded-lg shadow-2xl border"
             style={{
-              background: "var(--surface-color, #fff7ed)",
+              background: "var(--surface-color,rgb(218, 168, 107))",
               color: "var(--text-color, #1e3a8a)",
-              borderColor: "var(--border-color, #fed7aa)"
+              borderColor: "var(--border-color,rgb(192, 128, 54))"
             }}
           >
             <div
