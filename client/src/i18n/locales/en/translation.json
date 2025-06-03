@@ -279,6 +279,46 @@
         "rating": "4.3 (220)",
         "date": "Jan 28, 2025"
 
+      },
+      {
+        "title": "AI in Education",
+        "img": "/Images/Card5.png",
+        "students": "700 students",
+        "duration": "1hr 30min",
+        "rating": "4.1 (300)",
+        "date": "Jan 29, 2025"
+      },
+      {
+        "title": "AI for Healthcare",
+        "img": "/Images/Card6.png",
+        "students": "900 students",
+        "duration": "1hr 25min",
+        "rating": "4.4 (280)",
+        "date": "Jan 30, 2025"
+      },
+      {
+        "title": "AI in Agriculture",
+        "img": "/Images/Card7.png",
+        "students": "750 students",
+        "duration": "1hr 20min",
+        "rating": "4.6 (320)",
+        "date": "Jan 31, 2025"
+      },
+      {
+        "title": "AI for Business",
+        "img": "/Images/Card8.png",
+        "students": "850 students",
+        "duration": "1hr 35min",
+        "rating": "4.7 (400)",
+        "date": "Feb 1, 2025"
+      },
+      {
+        "title": "AI Ethics and Safety",
+        "img": "/Images/Card9.png",
+        "students": "650 students",
+        "duration": "1hr 40min",
+        "rating": "4.8 (360)",
+        "date": "Feb 2, 2025"
       }
     ]
   }

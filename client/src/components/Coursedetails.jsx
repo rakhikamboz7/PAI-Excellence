@@ -411,7 +411,7 @@ export default function CourseDetail() {
   };
 
   const [showAll, setShowAll] = useState(false);
-  const displayedCourses = showAll ? moreCourses : moreCourses.slice(0, 2);
+  const displayedCourses = showAll ? moreCourses : moreCourses.slice(0, 6);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
