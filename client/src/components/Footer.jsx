@@ -1,3 +1,4 @@
+
 "use client";
 import { FaFacebookF, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
@@ -22,7 +23,7 @@ export default function Footer() {
           icon: "text-blue-600 hover:text-blue-800",
           button: "bg-blue-600 hover:bg-blue-700",
           input: "focus:border-blue-500",
-          activeLink: "text-blue-600"
+          activeLink: "text-blue-600",
         };
       case "purple":
         return {
@@ -33,7 +34,7 @@ export default function Footer() {
           icon: "text-purple-600 hover:text-purple-800",
           button: "bg-purple-600 hover:bg-purple-700",
           input: "focus:border-purple-500",
-          activeLink: "text-purple-600"
+          activeLink: "text-purple-600",
         };
       case "green":
         return {
@@ -44,7 +45,7 @@ export default function Footer() {
           icon: "text-green-600 hover:text-green-800",
           button: "bg-green-600 hover:bg-green-700",
           input: "focus:border-green-500",
-          activeLink: "text-green-600"
+          activeLink: "text-green-600",
         };
       case "dark":
         return {
@@ -55,7 +56,7 @@ export default function Footer() {
           icon: "text-yellow-500 hover:text-yellow-400",
           button: "bg-yellow-600 hover:bg-yellow-700",
           input: "focus:border-yellow-500 bg-gray-800 border-gray-600",
-          activeLink: "text-yellow-400"
+          activeLink: "text-yellow-400",
         };
       default: // orange theme
         return {
@@ -66,7 +67,7 @@ export default function Footer() {
           icon: "text-[#FF6600] hover:text-[#e65c00]",
           button: "bg-[#FF6600] hover:bg-[#e65c00]",
           input: "focus:border-[#FF6600]",
-          activeLink: "text-[#FF6600]"
+          activeLink: "text-[#FF6600]",
         };
     }
   };
@@ -86,20 +87,24 @@ export default function Footer() {
 
   const linkClass = (path) =>
     `hover:underline ${
-      location.pathname === path 
-        ? `underline ${themeClasses.activeLink} font-semibold` 
+      location.pathname === path
+        ? `underline ${themeClasses.activeLink} font-semibold`
         : themeClasses.text
     }`;
 
   return (
-    <footer className={`${themeClasses.background} border-t ${themeClasses.border} py-10 px-6 lg:px-20 text-sm transition-colors duration-300`}>
+    <footer
+      className={`${themeClasses.background} border-t ${themeClasses.border} py-10 px-6 sm:px-10 lg:px-20 text-sm transition-colors duration-300`}
+    >
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Left Column - Branding */}
         <div>
           <h2 className={`${themeClasses.title} text-lg font-semibold mb-2`}>
             {t("footer.brand")}
           </h2>
-          <p className={`${themeClasses.text} mb-4`}>{t("footer.description")}</p>
+          <p className={`${themeClasses.text} mb-4`}>
+            {t("footer.description")}
+          </p>
           <div className="flex gap-3">
             <a href="#" className={themeClasses.icon}>
               <FaFacebookF />
@@ -113,8 +118,70 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick Links */}
-        <div>
+        {/* Combined Quick Links + Resources for Small Screens */}
+        <div className="block md:hidden flex justify-between gap-6">
+          {/* Quick Links */}
+          <div className="w-1/2">
+            <h3 className={`${themeClasses.title} font-semibold mb-2`}>
+              {t("footer.quickLinks")}
+            </h3>
+            <ul className="space-y-1">
+              <li>
+                <NavLink to="/" className={() => linkClass("/")}>
+                  {t("footer.links.home")}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/course-details"
+                  className={() => linkClass("/course-details")}
+                >
+                  {t("footer.links.courses")}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/media-coverage"
+                  className={() => linkClass("/media-coverage")}
+                >
+                  {t("footer.links.mediaCoverage")}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/events" className={() => linkClass("/events")}>
+                  {t("footer.links.events")}
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div className="w-1/2">
+            <h3 className={`${themeClasses.title} font-semibold mb-2`}>
+              {t("footer.resources")}
+            </h3>
+            <ul className="space-y-1">
+              <li>
+                <a href="#" className={`${themeClasses.text} hover:underline`}>
+                  {t("footer.links.blog")}
+                </a>
+              </li>
+              <li>
+                <a href="#" className={`${themeClasses.text} hover:underline`}>
+                  {t("footer.links.faqs")}
+                </a>
+              </li>
+              <li>
+                <a href="#" className={`${themeClasses.text} hover:underline`}>
+                  {t("footer.links.support")}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Quick Links for Medium+ (original position) */}
+        <div className="hidden md:block">
           <h3 className={`${themeClasses.title} font-semibold mb-3`}>
             {t("footer.quickLinks")}
           </h3>
@@ -125,12 +192,18 @@ export default function Footer() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/course-details" className={() => linkClass("/course-details")}>
+              <NavLink
+                to="/course-details"
+                className={() => linkClass("/course-details")}
+              >
                 {t("footer.links.courses")}
               </NavLink>
             </li>
             <li>
-              <NavLink to="/media-coverage" className={() => linkClass("/media-coverage")}>
+              <NavLink
+                to="/media-coverage"
+                className={() => linkClass("/media-coverage")}
+              >
                 {t("footer.links.mediaCoverage")}
               </NavLink>
             </li>
@@ -142,24 +215,24 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Resources */}
-        <div>
+        {/* Resources for Medium+ (original position) */}
+        <div className="hidden md:block">
           <h3 className={`${themeClasses.title} font-semibold mb-3`}>
             {t("footer.resources")}
           </h3>
-          <ul className={`space-y-2 ${themeClasses.text}`}>
+          <ul className="space-y-2">
             <li>
-              <a href="#" className="hover:underline">
+              <a href="#" className={`${themeClasses.text} hover:underline`}>
                 {t("footer.links.blog")}
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a href="#" className={`${themeClasses.text} hover:underline`}>
                 {t("footer.links.faqs")}
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a href="#" className={`${themeClasses.text} hover:underline`}>
                 {t("footer.links.support")}
               </a>
             </li>
@@ -176,7 +249,9 @@ export default function Footer() {
             placeholder={t("footer.emailPlaceholder")}
             className={`w-full px-3 py-2 border ${themeClasses.border} rounded ${themeClasses.text} mb-3 ${themeClasses.input} focus:outline-none`}
           />
-          <button className={`w-full ${themeClasses.button} text-white font-semibold py-2 rounded transition`}>
+          <button
+            className={`w-full ${themeClasses.button} text-white font-semibold py-2 rounded transition`}
+          >
             {t("footer.subscribeButton")}
           </button>
         </div>

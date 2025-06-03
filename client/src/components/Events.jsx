@@ -1,7 +1,10 @@
+
 "use client";
+
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../contexts/ThemeContext";
+import { motion } from "framer-motion";
 
 export default function Events() {
   const { t } = useTranslation();
@@ -15,35 +18,35 @@ export default function Events() {
           background: "bg-blue-50",
           title: "text-blue-800",
           text: "text-blue-600",
-          button: "bg-blue-600 hover:bg-blue-700"
+          button: "bg-blue-600 hover:bg-blue-700",
         };
       case "purple":
         return {
           background: "bg-purple-50",
           title: "text-purple-800",
           text: "text-purple-600",
-          button: "bg-purple-600 hover:bg-purple-700"
+          button: "bg-purple-600 hover:bg-purple-700",
         };
       case "green":
         return {
           background: "bg-green-50",
           title: "text-green-800",
           text: "text-green-600",
-          button: "bg-green-600 hover:bg-green-700"
+          button: "bg-green-600 hover:bg-green-700",
         };
       case "dark":
         return {
           background: "bg-gray-900",
           title: "text-yellow-400",
           text: "text-gray-300",
-          button: "bg-yellow-600 hover:bg-yellow-700"
+          button: "bg-yellow-600 hover:bg-yellow-700",
         };
       default: // orange theme
         return {
-          background: "bg-[#FFF7ED]", // updated here
+          background: "bg-[#FFF7ED]",
           title: "text-[#44425A]",
           text: "text-[#6C6A74]",
-          button: "bg-[#FF6600] hover:bg-[#e65c00]"
+          button: "bg-[#FF6600] hover:bg-[#e65c00]",
         };
     }
   };
@@ -56,7 +59,39 @@ export default function Events() {
   };
 
   return (
-    <div className={`space-y-12 px-6 lg:px-20 py-12 ${themeClasses.background} transition-colors duration-300`}>
+    <div className={`relative space-y-12 px-6 lg:px-20 py-20 ${themeClasses.background} mb-8`}>
+      
+      {/* Hero Section with Unique Animations */}
+      <motion.section className="relative text-center py-20 overflow-hidden">
+        <div className="absolute inset-0 animated-gradient"></div>
+
+        <motion.h1
+          className={`relative z-10 text-4xl font-bold ${themeClasses.title} mb-4`}
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
+        >
+          Explore Our Hosted Events
+        </motion.h1>
+
+        <motion.p
+          className={`relative z-10 text-lg ${themeClasses.text}`}
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+        >
+          Join the events organized by us and engage with our community.
+        </motion.p>
+
+        {/* Floating Particles for Elegance */}
+        <div className="floating-particles">
+          <div className="particle particle-one"></div>
+          <div className="particle particle-two"></div>
+          <div className="particle particle-three"></div>
+        </div>
+      </motion.section>
+
+      {/* Event List */}
       {eventsData.map((evt, idx) => (
         <div
           key={idx}
@@ -91,6 +126,62 @@ export default function Events() {
           </div>
         </div>
       ))}
+
+      <style jsx>{`
+        @keyframes gradientAnimation {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .animated-gradient {
+          background: linear-gradient(270deg, #EA580C, #FFF7ED);
+          background-size: 300% 300%;
+          animation: gradientAnimation 15s ease infinite;
+        }
+
+        /* Floating Particles */
+        .floating-particles {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          pointer-events: none; /* Allows interaction with text above */
+        }
+
+        .particle {
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(234, 88, 12, 0.5);
+          opacity: 0.6;
+          animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-20px) scale(1.1); }
+          100% { transform: translateY(0) scale(1); }
+        }
+
+        .particle-one {
+          width: 80px; height: 80px;
+          left: 10%; top: 20%;
+          animation-delay: 0s;
+        }
+        .particle-two {
+          width: 60px; height: 60px;
+          left: 70%; top: 30%;
+          animation-delay: 1s;
+        }
+        .particle-three {
+          width: 40px; height: 40px;
+          left: 40%; top: 50%;
+          animation-delay: 2s;
+        }
+      `}</style>
     </div>
   );
 }
+
+
