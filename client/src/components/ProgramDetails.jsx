@@ -78,11 +78,12 @@ const ProgramDetails = () => {
           </h2>
 
           <ul className={`space-y-4 ${themeClasses.text} themed-text-secondary`}>
-            <li>✔️ {t("programDetailsSection.points[0]")}</li>
-            <li>✔️ {t("programDetailsSection.details[1]")}</li>
-            <li>✔️ {t("programDetailsSection.details[2]")}</li>
-            <li>✔️ {t("programDetailsSection.details[3]")}</li>
-            <li>✔️ {t("programDetailsSection.details[4]")}</li>
+            <li>{t("programDetailsSection.points.point1")}</li>
+            <li>{t("programDetailsSection.points.point2")}</li>
+            <li>{t("programDetailsSection.points.point3")}</li>
+            <li>{t("programDetailsSection.points.point4")}</li>
+            <li>{t("programDetailsSection.points.point5")}</li>           
+          
           </ul>
 
           {/* Buttons */}

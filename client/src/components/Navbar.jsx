@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "../contexts/ThemeContext";
 import LanguageToggle from "./LanguageToggle";
 import ThemeSwitcher from "./ThemeSwitcher";
-
+import { Palette } from "lucide-react";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showThemeSwitcher, setShowThemeSwitcher] = useState(false);
@@ -131,28 +131,19 @@ const Navbar = () => {
             ))}
           </div>
           {/* Theme Switcher Button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button
-              onClick={(e) => {
-                e.stopPropagation(); // Prevent the click from immediately propagating to the document
-                setShowThemeSwitcher(!showThemeSwitcher);
-              }}
-              className={`p-2 rounded-lg ${themeClasses.button} transition-colors duration-200`}
-              aria-label="Toggle theme switcher"
-            >
-              <svg
-                className={`w-5 h-5 ${themeClasses.logo} themed-text-primary`}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M4 2a2 2 0 00-2 2v11a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm0 2h12v11H4V4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-          </div>
+<div className="hidden md:flex items-center space-x-4">
+  <button
+    onClick={(e) => {
+      e.stopPropagation();
+      setShowThemeSwitcher(!showThemeSwitcher);
+    }}
+    className={`flex items-center gap-2 px-4 py-2 rounded-full border-2 font-semibold text-sm shadow-sm transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 ${themeClasses.button} ${themeClasses.text}`}
+    aria-label="Toggle theme switcher"
+  >
+    🎨 <span className="hidden sm:inline">Themes</span>
+  </button>
+</div>
+
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button

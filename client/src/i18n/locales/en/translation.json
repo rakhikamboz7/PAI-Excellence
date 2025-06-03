@@ -46,23 +46,33 @@
     "newBatch": {
       "title": "New Batch starting June 15th",
       "description": "Join our comprehensive AI program and learn from industry experts. Limited seats available, so enroll now to secure your spot.",
-      "date": "June 15, 2023"
+      "date": "June 15, 2023",
+      "enroll": "Enroll Now"
     },
     "liveClass": {
       "title": "Upcoming Live Class: Introduction to LLMs",
       "description": "Join our free introductory session on Large Language Models. Open to all registrations.",
-      "time": "7:00 PM, June 20, 2023"
+      "time": "7:00 PM, June 20, 2023",
+      "register": "Register Now"
+    },
+    "DataAnalysisClass": {
+      "title": "Data Analysis Live Class Tomorrow",
+      "description": "Learn the fundamentals of data science, including data analysis, visualization, and machine learning techniques.",
+      "time":"7:00 PM, June 20, 2023",     
+      "startDate": "July 1, 2023",
+      "enroll": "Enroll Now"
     }
+
   },
   "programDetailsSection": {
     "title": "Intro to AI Program Details", 
-  "points": [
-    "✔️ The Intro to AI programs have a very nominal fee (free for several schools and with financial support available for students who need it).",
-    "✔️ Free for Punjab Government Schools, SGPC Schools, Akal Academies, GNDEC College, and SBSSTC University.",
-    "✔️ Register to attend live classes.",
-    "✔️ Designed for students in 8th grade and above. Introduces real-world AI skills and projects.",
-    "✔️ Bachelor’s and Master’s students are welcome to apply, especially those seeking real-world AI applications."
-  ],
+  "points": {
+    "point1": "✔️ The Intro to AI programs have a very nominal fee (free for several schools and with financial support available for students who need it).",
+    "point2": "✔️ Free for Punjab Government Schools, SGPC Schools, Akal Academies, GNDEC College, and SBSSTC University.",
+   "point3": "✔️ Register to attend live classes.",
+    "point4": "✔️ Designed for students in 8th grade and above. Introduces real-world AI skills and projects.",
+    "point5": "✔️ Bachelor’s and Master’s students are welcome to apply, especially those seeking real-world AI applications."
+  },
   "button1": "Register for practical AI course",
   "button2": "Class Recording (AI sessions)",
   "button3": "Join Live Events",
@@ -108,17 +118,23 @@
     "achievements": [
       {
         "title": "Master Real-World AI Projects",
+        "achievementLabel": "",
         "description": "Build impressive portfolio projects that showcase your skills to potential employers",
-        "benefits": [
+        "benefitTitle": "Key Points",
+        "benefits":
+         [
           "Complete 5+ industry-level AI projects",
           "Build machine learning models from scratch",
           "Deploy AI solutions to production",
           "Create impressive GitHub portfolio"
         ]
+       
       },
       {
         "title": "Land High-Paying AI Jobs",
+         "achievementLabel": "",
         "description": "Secure lucrative positions at top tech companies with our comprehensive career support",
+        "benefitTitle": "Key Points",
         "benefits": [
           "Average salary increase of 150%+",
           "Placement assistance at Fortune 500 companies",
@@ -128,7 +144,9 @@
       },
       {
         "title": "Join Elite AI Community",
+         "achievementLabel": "",
         "description": "Network with industry experts, researchers, and fellow AI enthusiasts",
+        "benefitTitle": "Key Points",
         "benefits": [
           "Access to exclusive AI community",
           "Mentorship from industry leaders",
@@ -138,7 +156,9 @@
       },
       {
         "title": "Become an AI Innovation Leader",
+         "achievementLabel": "",
         "description": "Transform from beginner to AI expert capable of leading cutting-edge projects",
+        "benefitTitle": "Key Points",
         "benefits": [
           "Lead AI transformation initiatives",
           "Publish research papers and articles",
@@ -259,6 +279,46 @@
         "rating": "4.3 (220)",
         "date": "Jan 28, 2025"
 
+      },
+      {
+        "title": "AI in Education",
+        "img": "/Images/Card5.png",
+        "students": "700 students",
+        "duration": "1hr 30min",
+        "rating": "4.1 (300)",
+        "date": "Jan 29, 2025"
+      },
+      {
+        "title": "AI for Healthcare",
+        "img": "/Images/Card6.png",
+        "students": "900 students",
+        "duration": "1hr 25min",
+        "rating": "4.4 (280)",
+        "date": "Jan 30, 2025"
+      },
+      {
+        "title": "AI in Agriculture",
+        "img": "/Images/Card7.png",
+        "students": "750 students",
+        "duration": "1hr 20min",
+        "rating": "4.6 (320)",
+        "date": "Jan 31, 2025"
+      },
+      {
+        "title": "AI for Business",
+        "img": "/Images/Card8.png",
+        "students": "850 students",
+        "duration": "1hr 35min",
+        "rating": "4.7 (400)",
+        "date": "Feb 1, 2025"
+      },
+      {
+        "title": "AI Ethics and Safety",
+        "img": "/Images/Card9.png",
+        "students": "650 students",
+        "duration": "1hr 40min",
+        "rating": "4.8 (360)",
+        "date": "Feb 2, 2025"
       }
     ]
   }
