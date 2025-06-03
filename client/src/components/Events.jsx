@@ -40,7 +40,7 @@ export default function Events() {
         };
       default: // orange theme
         return {
-          background: "bg-white",
+          background: "bg-[#FFF7ED]", // updated here
           title: "text-[#44425A]",
           text: "text-[#6C6A74]",
           button: "bg-[#FF6600] hover:bg-[#e65c00]"
