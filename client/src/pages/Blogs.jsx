@@ -1,5 +1,5 @@
 "use client"
-
+import { useCallback } from "react"
 import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { useTheme } from "../contexts/ThemeContext"
@@ -93,9 +93,34 @@ const Blogs = () => {
     fetchBlogs()
   }, [])
 
+
+
+  const filterBlogs = useCallback(() => {
+    let filtered = [...blogs]
+
+    if (searchTerm) {
+      filtered = filtered.filter(
+        (blog) =>
+          blog.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          blog.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          blog.tags?.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase())),
+      )
+    }
+
+    if (selectedCategory) {
+      filtered = filtered.filter((blog) => blog.category === selectedCategory)
+    }
+
+    if (selectedDifficulty) {
+      filtered = filtered.filter((blog) => blog.difficulty === selectedDifficulty)
+    }
+
+    setFilteredBlogs(filtered)
+  }, [blogs, searchTerm, selectedCategory, selectedDifficulty])
+
   useEffect(() => {
     filterBlogs()
-  }, [blogs, searchTerm, selectedCategory, loading, selectedDifficulty])
+  }, [blogs, searchTerm, selectedCategory, loading, selectedDifficulty, filterBlogs])
 
   const fetchBlogs = async () => {
     try {
@@ -127,29 +152,6 @@ const Blogs = () => {
     } finally {
       setLoading(false)
     }
-  }
-
-  const filterBlogs = () => {
-    let filtered = [...blogs]
-
-    if (searchTerm) {
-      filtered = filtered.filter(
-        (blog) =>
-          blog.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          blog.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          blog.tags?.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase())),
-      )
-    }
-
-    if (selectedCategory) {
-      filtered = filtered.filter((blog) => blog.category === selectedCategory)
-    }
-
-    if (selectedDifficulty) {
-      filtered = filtered.filter((blog) => blog.difficulty === selectedDifficulty)
-    }
-
-    setFilteredBlogs(filtered)
   }
 
   const getCategoryLabel = (value) => {
