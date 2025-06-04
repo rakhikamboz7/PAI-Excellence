@@ -41,6 +41,7 @@ const Navbar = () => {
     { name: t("navbar.home"), href: "/" },
     { name: t("navbar.courseDetails"), href: "/course-details" },
     { name: t("navbar.mediaCoverage"), href: "/media-coverage" },
+    { name: t("navbar.blogs"), href: "/blogs" },
     { name: t("navbar.events"), href: "/events" },
   ];
 
