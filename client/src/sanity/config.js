@@ -6,7 +6,7 @@ export const client = createClient({
   dataset: "production",
   useCdn: false, // Set to false for real-time updates
   apiVersion: "2025-06-04",
-  token: "skft3UkPp2v6KjLGWS8N7NfTeYUkGFcSmXuxLSb8QtUTqgnsUYJFxHXbyhP7AlxaFXmvvhOsUqHmaKZWRDsh6e3UDO40dua0SUXUGalOIki8Dqg4DGGPYXCOLGk4xcC9jFqJQUwtxPv4EGw6764hgS7wnCSY95pDXWc86vVl8Wmca03M1dcE", // Replace with your actual Sanity token
+  token: "", // Replace with your actual Sanity token
 })
 
 // For public read operations (no token needed)
