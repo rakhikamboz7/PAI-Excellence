@@ -14,11 +14,12 @@ function Homepage() {
   return (
     <main>
       <Hero />      
+   <ProgramDetails />
+      <Instructor />
       <Mission />
       <Batches />
-      <ProgramDetails />
       {/* <PdfEmbed /> */}
-      <Instructor />
+    
       <StudentGains />
     </main>
   );
