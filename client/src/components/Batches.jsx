@@ -1029,14 +1029,14 @@ const BatchesSection = () => {
   }
 
   function BatchModal({ open, onOpenChange, modalData }) {
-    if (!modalData) return null;
-
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
     const [successMsg, setSuccessMsg] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    if (!modalData) return null;
 
     const handleSubmit = async (e) => {
       e.preventDefault();

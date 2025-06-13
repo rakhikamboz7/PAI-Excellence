@@ -7,8 +7,8 @@ export const AuthContext = createContext()
 
 // Default admin credentials (in production, this should be in environment variables)
 const ADMIN_CREDENTIALS = {
-  username: import.meta.env.VITE_ADMIN_USERNAME || "admin",
-  password: import.meta.env.VITE_ADMIN_PASSWORD || "admin123",
+  username: import.meta.env.VITE_ADMIN_USERNAME || "adminmaxmin",
+  password: import.meta.env.VITE_ADMIN_PASSWORD || "maxmin@123",
   email: import.meta.env.VITE_ADMIN_EMAIL || "admin@paiexcel.com",
 }
 
