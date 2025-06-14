@@ -804,8 +804,6 @@
 
 
 
-
-
 // src/components/BatchesSection.jsx
 "use client";
 
@@ -831,7 +829,13 @@ const BatchesSection = () => {
   const [modalData, setModalData] = useState(null);
   const { currentTheme } = useTheme();
 
-  const themeClasses = (() => {
+  // theme mapping: only the button class changes to the orange→amber gradient
+  const getThemeClasses = () => {
+    const gradientBtn =
+      "bg-gradient-to-r from-orange-600 to-amber-600 " +
+      "hover:from-orange-700 hover:to-amber-500 " +
+      "text-white font-semibold";
+
     switch (currentTheme) {
       case "blue":
         return {
@@ -840,7 +844,7 @@ const BatchesSection = () => {
           title: "text-blue-primary themed-text-primary",
           text: "text-blue-text themed-text-secondary",
           card: "bg-blue-50",
-          button: "bg-blue-600 hover:bg-blue-700 text-white themed-button-primary",
+          button: gradientBtn,
         };
       case "purple":
         return {
@@ -849,7 +853,7 @@ const BatchesSection = () => {
           title: "text-purple-primary themed-text-primary",
           text: "text-purple-text themed-text-secondary",
           card: "bg-purple-50",
-          button: "bg-purple-600 hover:bg-purple-700 text-white themed-button-primary",
+          button: gradientBtn,
         };
       case "green":
         return {
@@ -858,7 +862,7 @@ const BatchesSection = () => {
           title: "text-green-primary themed-text-primary",
           text: "text-green-text themed-text-secondary",
           card: "bg-green-50",
-          button: "bg-green-600 hover:bg-green-700 text-white themed-button-primary",
+          button: gradientBtn,
         };
       case "dark":
         return {
@@ -867,7 +871,7 @@ const BatchesSection = () => {
           title: "text-dark-primary themed-text-primary",
           text: "text-dark-text themed-text-secondary",
           card: "bg-gray-800",
-          button: "bg-yellow-500 hover:bg-yellow-600 text-dark themed-button-primary",
+          button: gradientBtn,
         };
       default:
         return {
@@ -876,10 +880,12 @@ const BatchesSection = () => {
           title: "text-orange-600 themed-text-primary",
           text: "text-gray-900 themed-text-secondary",
           card: "bg-white",
-          button: "bg-orange-600 hover:bg-orange-700 text-white themed-button-primary",
+          button: gradientBtn,
         };
     }
-  })();
+  };
+
+  const themeClasses = getThemeClasses();
 
   // New Batches Data
   const newBatchesData = [
@@ -891,33 +897,29 @@ const BatchesSection = () => {
       date: t("batches.newBatch.date"),
       time: "",
       icon: <Calendar size={18} aria-label="calendar icon" />,
-      ctaText: t("batches.newBatch.register", "Register Now"),
+      ctaText: "Register Now",
     },
     {
       id: 4,
       type: "batch",
-      title: t("batches.newBatchPractical.title", "Practical AI Course"),
-      description: t(
-        "batches.newBatchPractical.description",
-        "Hands-on sessions covering Python and ML basics. Duration: 10 weeks, weekends only."
-      ),
-      date: t("batches.newBatchPractical.date", "Starts 26 April 2025"),
+      title: "Practical AI Course",
+      description:
+        "Hands-on sessions covering Python and ML basics. Duration: 10 weeks, weekends only.",
+      date: "Starts 26 April 2025",
       time: "",
       icon: <Calendar size={18} aria-label="calendar icon" />,
-      ctaText: t("batches.newBatch.register", "Register Now"),
+      ctaText: "Register Now",
     },
     {
       id: 5,
       type: "batch",
-      title: t("batches.newBatchIntern.title", "Internship/Projects Batch"),
-      description: t(
-        "batches.newBatchIntern.description",
-        "Work on real-world AI projects under mentor guidance. Duration: 6 weeks, limited seats."
-      ),
-      date: t("batches.newBatchIntern.date", "Open for Registration"),
+      title: "Internship/Projects Batch",
+      description:
+        "Work on real-world AI projects under mentor guidance. Duration: 6 weeks, limited seats.",
+      date: "Open for Registration",
       time: "",
       icon: <Calendar size={18} aria-label="calendar icon" />,
-      ctaText: t("batches.newBatch.register", "Register Now"),
+      ctaText: "Register Now",
     },
   ];
 
@@ -928,8 +930,8 @@ const BatchesSection = () => {
       type: "class",
       title: t("batches.liveClass.title"),
       description: t("batches.liveClass.description"),
-      date: t("batches.liveClass.time").split(",")[1].trim(),
-      time: t("batches.liveClass.time").split(",")[0].trim(),
+      date: t("batches.liveClass.time").split(",")[1],
+      time: t("batches.liveClass.time").split(",")[0],
       icon: <Clock size={18} aria-label="clock icon" />,
       ctaText: t("batches.liveClass.register"),
       image: "/Images/batches1.png",
@@ -941,10 +943,8 @@ const BatchesSection = () => {
       description: t("batches.DataAnalysisClass.description"),
       date: t("batches.DataAnalysisClass.startDate"),
       time: t("batches.DataAnalysisClass.time"),
-      icon: <Clock size={18} aria-label="clock icon" />,
-      ctaText: t("batches.DataAnalysisClass.register", {
-        defaultValue: t("batches.liveClass.register"),
-      }),
+      icon: <Calendar size={18} aria-label="calendar icon" />,
+      ctaText: t("batches.liveClass.register"),
       image: "/Images/batches2.png",
     },
   ];
@@ -1029,14 +1029,14 @@ const BatchesSection = () => {
   }
 
   function BatchModal({ open, onOpenChange, modalData }) {
+    if (!modalData) return null;
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
     const [successMsg, setSuccessMsg] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
-
-    if (!modalData) return null;
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -1047,7 +1047,9 @@ const BatchesSection = () => {
       try {
         const res = await fetch("http://localhost:5000/api/register", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({
             course: modalData.title,
             name,
@@ -1055,15 +1057,19 @@ const BatchesSection = () => {
             phone,
           }),
         });
+
         if (!res.ok) {
           const body = await res.json();
           throw new Error(body.error || "Failed to register");
         }
-        setSuccessMsg(t("batches.modal.success", "Student successfully registered! 🎉"));
-        setName(""); setEmail(""); setPhone("");
+
+        setSuccessMsg("Student successfully registered! 🎉");
+        setName("");
+        setEmail("");
+        setPhone("");
       } catch (err) {
-        console.error(err);
-        setErrorMsg(err.message || t("batches.modal.error", "Server error"));
+        console.error("Registration error:", err);
+        setErrorMsg(err.message || "Server error");
       } finally {
         setIsSubmitting(false);
       }
@@ -1080,12 +1086,12 @@ const BatchesSection = () => {
               tabIndex={0}
               className={`text-lg sm:text-xl font-semibold ${themeClasses.title}`}
             >
-              {t("batches.modal.enrolling", "Enrolling for")} {modalData.title}
+              Enrolling for {modalData.title}
             </DialogTitle>
             <button
               onClick={() => onOpenChange(false)}
               className="p-1 hover:opacity-75 focus:outline-none"
-              aria-label={t("batches.modal.close", "Close enrollment form")}
+              aria-label="Close enrollment form"
             >
               <X size={20} />
             </button>
@@ -1094,41 +1100,37 @@ const BatchesSection = () => {
             {errorMsg && <div className="text-sm text-red-600">{errorMsg}</div>}
             {successMsg && <div className="text-sm text-green-600">{successMsg}</div>}
             <div>
-              <label className="block mb-1 font-medium text-sm">
-                {t("batches.modal.nameLabel", "Name")}
-              </label>
+              <label className="block mb-1 font-medium text-sm">Name</label>
               <input
                 type="text"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder={t("batches.modal.namePlaceholder", "Your full name")}
+                placeholder="Your full name"
               />
             </div>
             <div>
-              <label className="block mb-1 font-medium text-sm">
-                {t("batches.modal.emailLabel", "Email")}
-              </label>
+              <label className="block mb-1 font-medium text-sm">Email</label>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder={t("batches.modal.emailPlaceholder", "you@example.com")}
+                placeholder="you@example.com"
               />
             </div>
             <div>
               <label className="block mb-1 font-medium text-sm">
-                {t("batches.modal.phoneLabel", "Phone (optional)")}
+                Phone (optional)
               </label>
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 className="w-full px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder={t("batches.modal.phonePlaceholder", "123-456-7890")}
+                placeholder="123-456-7890"
               />
             </div>
             <DialogFooter>
@@ -1137,9 +1139,7 @@ const BatchesSection = () => {
                 disabled={isSubmitting}
                 className={`w-full text-sm sm:text-base ${themeClasses.button}`}
               >
-                {isSubmitting
-                  ? t("batches.modal.submitting", "Submitting…")
-                  : t("batches.modal.submit", "Submit")}
+                {isSubmitting ? "Submitting…" : "Submit"}
               </Button>
             </DialogFooter>
           </form>
@@ -1154,7 +1154,7 @@ const BatchesSection = () => {
       aria-labelledby="batches-section-title"
     >
       <div className="container mx-auto space-y-16">
-        {/* New Batches */}
+        {/* New Batches Section */}
         <div>
           <motion.h2
             id="new-batches-title"
@@ -1162,10 +1162,10 @@ const BatchesSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, type: "spring", stiffness: 80 }}
             viewport={{ once: true }}
-            className={`text-2xl sm:text-3xl font-bold mb-8 ${themeClasses.title}`}
+            className={`text-2xl sm:text-3xl font-bold mb-8 ${themeClasses.title} transition-colors`}
             tabIndex={0}
           >
-            {t("batchesSection.newBatchesHeading")}
+            New Batches
           </motion.h2>
           <div role="list" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {newBatchesData.map((batch) => (
@@ -1174,7 +1174,7 @@ const BatchesSection = () => {
           </div>
         </div>
 
-        {/* Live Classes */}
+        {/* Upcoming Live Classes Section */}
         <div>
           <motion.h2
             id="live-classes-title"
@@ -1182,10 +1182,10 @@ const BatchesSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, type: "spring", stiffness: 80 }}
             viewport={{ once: true }}
-            className={`text-2xl sm:text-3xl font-bold mb-8 ${themeClasses.title}`}
+            className={`text-2xl sm:text-3xl font-bold mb-8 ${themeClasses.title} transition-colors`}
             tabIndex={0}
           >
-            {t("batchesSection.liveClassesHeading")}
+            Join Our Upcoming Free Live Classes to Know More
           </motion.h2>
           <div role="list" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {liveClassesData.map((batch) => (
@@ -1195,6 +1195,7 @@ const BatchesSection = () => {
         </div>
       </div>
 
+      {/* Enrollment Modal */}
       <AnimatePresence>
         {modalOpen && (
           <BatchModal
@@ -1209,25 +1210,3 @@ const BatchesSection = () => {
 };
 
 export default BatchesSection;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
