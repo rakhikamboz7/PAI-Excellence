@@ -7,7 +7,7 @@ import Hero from "../components/Hero"
 import Mission from "../components/Mission"
 import Batches from "../components/Batches"
 import ProgramDetails from "../components/ProgramDetails"
-import PdfEmbed from "../components/PdfEmbed"
+
 import Instructor from "../components/Instructor"
 import StudentGains from "../components/StudentGains"
 
@@ -51,13 +51,7 @@ const Homepage = () => {
         details: "Complete AI & Machine Learning Curriculum with hands-on projects.",
       },
     },
-    {
-      id: "pdfEmbed",
-      component: PdfEmbed,
-      content: {
-        title: "Course Materials",
-      },
-    },
+    
     {
       id: "instructor",
       component: Instructor,
