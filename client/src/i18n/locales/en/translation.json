@@ -66,31 +66,57 @@
     "button4": "Internship Opportunities",
     "videoTitle": "Prepare kids for the future — Practical AI Classes"
   },
+ 
   "batchesSection": {
     "newBatchesHeading": "New Batches",
-    "liveClassesHeading": "Join Our Upcoming Free Live Classes to Know More"
+    "liveClassesHeading": "Live Classes"
   },
   "batches": {
     "newBatch": {
-      "title": "New Batch starting June 15th",
-      "description": "Join our comprehensive AI program and learn from industry experts. Limited seats available, so enroll now to secure your spot.",
-      "date": "June 15, 2023"
+      "title": "AI Foundation Batch",
+      "description": "Learn AI fundamentals, Python basics, and key concepts. Duration: 6 weeks, weekends only.",
+      "date": "Starts 15 July 2025",
+      "register": "Register Now"
+    },
+    "newBatchPractical": {
+      "title": "Practical AI Course",
+      "description": "Hands-on sessions covering Python and ML basics. Duration: 10 weeks, weekends only.",
+      "date": "Starts 26 April 2025"
+    },
+    "newBatchIntern": {
+      "title": "Internship/Projects Batch",
+      "description": "Work on real-world AI projects under mentor guidance. Duration: 6 weeks, limited seats.",
+      "date": "Open for Registration"
     },
     "liveClass": {
-      "title": "Upcoming Live Class: Introduction to LLMs",
-      "description": "Join our free introductory session on Large Language Models. Open to all registrations.",
-      "time": "7:00 PM, June 20, 2023",
-      "register": "Register Now"
+      "title": "Live AI Class",
+      "description": "Join our live sessions for interactive learning and Q&A.",
+      "time": "5:00 PM – 6:30 PM, Every Saturday",
+      "register": "Join Now"
     },
     "DataAnalysisClass": {
-      "title": "Data Analysis Live Class Tomorrow",
-      "description": "Learn the fundamentals of data science, including data analysis, visualization, and machine learning techniques.",
-      "time": "7:00 PM, June 20, 2023",
-      "startDate": "July 1, 2023",
+      "title": "Data Analysis Masterclass",
+      "description": "Understand data visualization, pandas, and real case studies.",
+      "startDate": "Starts 1 August 2025",
+      "time": "4:00 PM – 5:30 PM",
       "register": "Register Now"
+    },
+    "modal": {
+      "enrolling": "Enrolling for",
+      "close": "Close enrollment form",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your full name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "phoneLabel": "Phone (optional)",
+      "phonePlaceholder": "123-456-7890",
+      "submit": "Submit",
+      "submitting": "Submitting…",
+      "success": "Student successfully registered! 🎉",
+      "error": "Server error"
     }
   },
-  "registration": {
+"registration": {
     "title": "AI Training & Internship Hub",
     "subtitle": "Enroll in our hands-on AI courses or apply for internship opportunities with us.",
     "buttons": {
