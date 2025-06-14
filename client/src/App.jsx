@@ -28,7 +28,7 @@ function AppContent() {
     window.scrollTo(0, 0)
   }, [location.pathname])
 
-  const isAdminRoute = location.pathname.startsWith("/admin")
+  const isAdminRoute = location.pathname.startsWith("/admin-dashboard")
 
   return (
     <div className="min-h-screen flex flex-col">
