@@ -30,6 +30,7 @@
     "lucide-react": "^0.511.0",
     "mongoose": "^8.15.1",
     "react": "^19.1.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-countup": "^6.5.3",
     "react-dom": "^19.1.0",
     "react-flow-renderer": "^10.3.17",
@@ -37,6 +38,9 @@
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.0",
     "shadcn": "^2.3.0",
+    "slate": "^0.117.0",
+    "slate-history": "^0.113.1",
+    "slate-react": "^0.117.1",
     "tailwind-merge": "^3.3.0",
     "tailwind-variants": "^1.0.0",
     "tailwindcss-animate": "^1.0.7"
