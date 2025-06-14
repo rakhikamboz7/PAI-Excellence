@@ -1,7 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "pnpm install --no-frozen-lockfile && pnpm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "pnpm install && pnpm run build",
+  "outputDirectory": "client/dist",
+  "rootDirectory": "client",
   "framework": "vite",
   "routes": [
     {
