@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Theme-specific global styles with comprehensive color schemes */
+.theme-orange {
+  --primary-color: #ea580c;
+  --secondary-color: #f59e0b;
+  --background-color: #ffffff;
+  --surface-color: #fff7ed;
+  --text-color: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #fed7aa;
+  --accent-color: #fb923c;
+}
+
+.theme-blue {
+  --primary-color: #1e40af;
+  --secondary-color: #3b82f6;
+  --background-color: #eff6ff;
+  --surface-color: #dbeafe;
+  --text-color: #1e3a8a;
+  --text-secondary: #3730a3;
+  --border-color: #93c5fd;
+  --accent-color: #60a5fa;
+}
+
+.theme-purple {
+  --primary-color: #7c3aed;
+  --secondary-color: #a855f7;
+  --background-color: #faf5ff;
+  --surface-color: #f3e8ff;
+  --text-color: #581c87;
+  --text-secondary: #6b21a8;
+  --border-color: #c4b5fd;
+  --accent-color: #a78bfa;
+}
+
+.theme-green {
+  --primary-color: #059669;
+  --secondary-color: #10b981;
+  --background-color: #ecfdf5;
+  --surface-color: #d1fae5;
+  --text-color: #047857;
+  --text-secondary: #065f46;
+  --border-color: #86efac;
+  --accent-color: #34d399;
+}
+
+.theme-dark {
+  --primary-color: #f59e0b;
+  --secondary-color: #fcd34d;
+  --background-color: #111827;
+  --surface-color: #1f2937;
+  --text-color: #f9fafb;
+  --text-secondary: #d1d5db;
+  --border-color: #374151;
+  --accent-color: #fde68a;
+}
+
+/* Apply theme colors to body and main elements */
+.theme-orange,
+.theme-blue,
+.theme-purple,
+.theme-green,
+.theme-dark {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+/* Theme-specific component styling */
+.theme-orange .themed-surface {
+  background-color: var(--surface-color);
+  border-color: var(--border-color);
+}
+
+.theme-blue .themed-surface {
+  background-color: var(--surface-color);
+  border-color: var(--border-color);
+}
+
+.theme-purple .themed-surface {
+  background-color: var(--surface-color);
+  border-color: var(--border-color);
+}
+
+.theme-green .themed-surface {
+  background-color: var(--surface-color);
+  border-color: var(--border-color);
+}
+
+.theme-dark .themed-surface {
+  background-color: var(--surface-color);
+  border-color: var(--border-color);
+}
+
+/* Theme-specific text colors */
+.theme-orange .themed-text-primary {
+  color: var(--primary-color);
+}
+.theme-blue .themed-text-primary {
+  color: var(--primary-color);
+}
+.theme-purple .themed-text-primary {
+  color: var(--primary-color);
+}
+.theme-green .themed-text-primary {
+  color: var(--primary-color);
+}
+.theme-dark .themed-text-primary {
+  color: var(--primary-color);
+}
+
+.theme-orange .themed-text-secondary {
+  color: var(--text-secondary);
+}
+.theme-blue .themed-text-secondary {
+  color: var(--text-secondary);
+}
+.theme-purple .themed-text-secondary {
+  color: var(--text-secondary);
+}
+.theme-green .themed-text-secondary {
+  color: var(--text-secondary);
+}
+.theme-dark .themed-text-secondary {
+  color: var(--text-secondary);
+}
+
+/* Theme-specific button styling */
+.theme-orange .themed-button-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.theme-blue .themed-button-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.theme-purple .themed-button-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.theme-green .themed-button-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.theme-dark .themed-button-primary {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Custom scrollbar for different themes */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+@layer base {
+  :root {
+    --border: 228 13% 90%;
+    --input: 228 13% 90%;
+    --ring: 228 100% 60%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --radius: 0.5rem;
+
+    --destructive: 0 100% 67%;
+    --destructive-foreground: 0 0% 100%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
